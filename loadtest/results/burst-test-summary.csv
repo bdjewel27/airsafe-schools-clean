@@ -1,0 +1,2 @@
+aws_account_id,region,duration_sec,total_events_ingested,avg_throughput_eps,successful_batches,failed_batches,dlq_depth,p50_ms,p95_ms,p99_ms
+570088430516,ap-southeast-2,901.94,116540,129.21,11654,0,70320,84.31,2041.48,2075.88

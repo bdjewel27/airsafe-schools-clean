@@ -1,0 +1,441 @@
+<resources>
+    <!-- App Brand & Identity -->
+    <string name="app_name">AirSafe Schools</string>
+    <string name="app_tagline">Outdoor Activity Safety &amp; Environmental Intelligence</string>
+    <string name="app_subtitle">Reliable guidance grounded in live sensor data &amp; safety policy</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_home">Home</string>
+    <string name="tab_trends">Trends</string>
+    <string name="tab_assistant">Assistant</string>
+    <string name="tab_analytics">Analytics</string>
+    <string name="tab_staff">Staff</string>
+
+    <!-- Policy Decision Outcomes (Hard Gate 4 / Policy v1.2) -->
+    <string name="decision_proceed_title">Safe for Outdoors</string>
+    <string name="decision_proceed_desc">Proceed with Normal Outdoor Activities</string>
+    <string name="decision_precautions_title">Proceed with Caution</string>
+    <string name="decision_precautions_desc">Proceed with Caution &amp; Hydration Breaks</string>
+    <string name="decision_modify_title">Modify Activity</string>
+    <string name="decision_modify_desc">Modify or Limit Outdoor Physical Exertion</string>
+    <string name="decision_move_indoors_title">Move Indoors Immediately</string>
+    <string name="decision_move_indoors_desc">Move Indoors Immediately</string>
+    <string name="decision_unknown_title">Data Unavailable</string>
+    <string name="decision_unknown_desc">Fail-Closed: Keep Students Indoors Until Verified</string>
+
+    <!-- Environmental Sensor Metrics -->
+    <string name="metric_heat_index">Heat Index</string>
+    <string name="metric_aqi">Air Quality Index (AQI)</string>
+    <string name="metric_pm25">PM2.5</string>
+    <string name="metric_temp">Ambient Temp</string>
+    <string name="metric_wet_bulb">Wet Bulb Temp</string>
+    <string name="metric_humidity">Relative Humidity</string>
+
+    <!-- Durations & Precautions -->
+    <string name="max_outdoor_duration">Max Outdoor Duration</string>
+    <string name="minutes_suffix">%1$d minutes</string>
+    <string name="requires_shade">Mandatory Shade</string>
+    <string name="requires_hydration">Hydration Breaks Required</string>
+
+    <!-- Status Banners & Warnings -->
+    <string name="banner_stale_warning">Warning: Sensor data is stale (>90 mins). Fallback policy applied.</string>
+    <string name="banner_offline">Offline Mode: Operating from local authoritative policy cache.</string>
+    <string name="banner_override_active">Coordinator Override Active: %1$s</string>
+    <string name="banner_recalculating">Recalculating decision in-place...</string>
+
+    <!-- Coordinator Controls -->
+    <string name="btn_coordinator_override">Coordinator Override</string>
+    <string name="btn_override_apply">Apply Override</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="dialog_override_title">Emergency Decision Override</string>
+    <string name="dialog_override_desc">This override will be logged to the immutable audit trail and broadcast to all staff.</string>
+    <string name="label_override_reason">Override Reason (Min 5 chars)</string>
+    <string name="err_override_reason_short">Reason must be at least 5 characters</string>
+
+    <!-- Routine & Activities -->
+    <string name="current_activity">Current Activity</string>
+    <string name="next_activity">Next Activity</string>
+    <string name="btn_manage_routine">Activity Routine</string>
+    <string name="btn_add_note">Add Class Note</string>
+    <string name="btn_refresh">Refresh Now</string>
+    <string name="btn_logout">Logout</string>
+
+    <!-- AI Assistant -->
+    <string name="assistant_title">AI Environmental Assistant</string>
+    <string name="assistant_greeting">Hello! I am your AirSafe Assistant. Ask any question about today\'s verified telemetry, heat index, or Policy v1.2 safety guidelines.</string>
+    <string name="assistant_placeholder">Ask a question (e.g. Can we hold PE class outside?)</string>
+    <string name="assistant_mcp_tool_step">Calling MCP tool: %1$s...</string>
+    <string name="assistant_policy_check_step">Verifying Model School Outdoor Activity Policy v1.2...</string>
+    <string name="assistant_suggested_followups">Suggested Follow-ups:</string>
+    <string name="chip_outdoor_pe">Can PE be outside today?</string>
+    <string name="chip_heat_rules">Heat Index Policy Rules</string>
+
+    <!-- Roles & Authentication -->
+    <string name="role_teacher">Teacher</string>
+    <string name="role_coordinator">Coordinator</string>
+    <string name="school_label">School: %1$s</string>
+    <string name="auth_failed">Authentication failed: Check credentials or server connection.</string>
+
+    <!-- Extended Comprehensive UI Strings (U-7) -->
+    <string name="portal_title">AirSafe Portal</string>
+    <string name="login_subtitle">Invite-only Staff Authentication</string>
+    <string name="login_email_label">School Email</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_button">Login to School Dashboard</string>
+    <string name="login_demo_credentials">Demo Credentials:</string>
+    <string name="login_as_teacher">Login as Teacher</string>
+    <string name="login_as_coordinator">Login as Coordinator</string>
+    <string name="trends_title">Temperature &amp; AQI Trends</string>
+    <string name="trends_subtitle">24-Hour Continuous Telemetry &amp; School Hours</string>
+    <string name="trends_offline_banner">Offline Mode: Displaying cached history from local database.</string>
+    <string name="trends_compare_label">Compare Location:</string>
+    <string name="trends_all_sites">Campus Average</string>
+    <string name="trends_chart_title">24-Hour Environmental Timeline</string>
+    <string name="trends_table_title">Hourly Telemetry Log (Accessible View)</string>
+    <string name="staff_title">Staff &amp; Teacher Roster</string>
+    <string name="staff_subtitle">Scoped strictly to your school campus</string>
+    <string name="staff_invite_header">Invite New Teacher</string>
+    <string name="staff_invite_button">Send Invite</string>
+    <string name="sites_title">Campus Sensor Locations</string>
+    <string name="sites_subtitle">Verified IoT Telemetry across campus</string>
+    <string name="sites_avg_heat_index">Campus Average Heat Index</string>
+    <string name="sites_avg_aqi">Campus Average AQI</string>
+    <string name="sites_classroom_notice">Indoor Classrooms (Shielded)</string>
+    <string name="rule_viewer_title">Active Safety Policy Rules (Policy v1.2)</string>
+    <string name="rule_viewer_subtitle">Governing outdoor physical activities &amp; environmental safety</string>
+    <string name="decision_cloud_reset">Reset to Live Cloud Data</string>
+    <string name="view_policy_rules">View Rules</string>
+    <string name="active_policy_tag">Active Policy: Policy v1.2</string>
+    <string name="metric_dialog_title">Sensor Metric Details &amp; Clinical Thresholds</string>
+    <string name="metric_clinical_guidance">Clinical Guidance &amp; Policy Impact:</string>
+    <!-- Trigger Reasons & Decision Mapping -->
+    <string name="decision_reason_aqi_trigger">AQI %1$s: %2$s</string>
+    <string name="decision_reason_heat_index_trigger">Heat Index %1$s°C: %2$s</string>
+    <string name="decision_reason_respiratory_stepup">Respiratory condition active: AQI category stepped up</string>
+    <string name="decision_reason_modeled_capped">Data is modeled: capped at Proceed with Caution</string>
+    <string name="decision_reason_stale_capped">Data is older than 90 mins: capped at Proceed with Caution</string>
+    <string name="decision_reason_normal_policy">Conditions within safety policy limits</string>
+
+    <string name="decision_action_proceed">Safe</string>
+    <string name="decision_action_precautions">Caution</string>
+    <string name="decision_action_modify">Modify</string>
+    <string name="decision_action_move_indoors">Move Indoors</string>
+    <string name="decision_action_unknown">Unknown</string>
+
+    <string name="action_proceed">Proceed</string>
+    <string name="action_modify">Modify</string>
+    <string name="action_precautions">Proceed with Precautions</string>
+    <string name="action_move_indoors">Move Indoors</string>
+    <string name="action_unknown">Unknown</string>
+    <string name="audit_trail_title">Immutable Override Audit Trail</string>
+    <string name="audit_export_pdf">Export Weekly PDF Report</string>
+
+    <!-- UX & Accessibility Redesign (Step 4) -->
+    <string name="status_modeled">Modeled</string>
+    <string name="status_measured">Measured</string>
+    <string name="status_online">Online</string>
+    <string name="status_offline">Offline</string>
+    <string name="status_unknown">Unknown</string>
+    <string name="btn_why_details">Why? See Details</string>
+    <string name="link_override">Override</string>
+    <string name="header_upcoming_activities">Upcoming Activities</string>
+    <string name="intensity_light">Light</string>
+    <string name="intensity_moderate">Moderate</string>
+    <string name="intensity_vigorous">Vigorous</string>
+    <string name="tier_safe">Safe</string>
+    <string name="tier_moderate">Moderate</string>
+    <string name="tier_sensitive">Unhealthy for Sensitive</string>
+    <string name="tier_unhealthy">Unhealthy</string>
+    <string name="tab_chart">Chart</string>
+    <string name="tab_table">Table</string>
+    <string name="dialog_explanation_title">Environmental Factors &amp; Guidance</string>
+    <string name="detail_field_label">Playground Field</string>
+    <string name="detail_courtyard_label">Courtyard</string>
+
+    <!-- Step 7.4 Resource Extractions -->
+    <string name="default_school_name">Dhaka Model School</string>
+    <string name="default_staff_name">School Staff</string>
+    <string name="role_admin">Admin</string>
+    <string name="loading_verified_telemetry">Loading verified live telemetry...</string>
+
+    <string name="header_active_health_notes">Active Health Notes:</string>
+    <string name="btn_add_health_note">+ Add Health Note</string>
+    <string name="btn_retry">Retry</string>
+    <string name="label_now_prefix">Now • %1$s</string>
+    <string name="label_now_outdoor_default">Now • Outdoor Activities</string>
+    <string name="banner_override_active_format">Coordinator Override Active: %1$s</string>
+    <string name="label_data_freshness_format">Data %1$s • %2$s</string>
+
+    <string name="dialog_explanation_alert_title">🚨 Urgent AirSafe Alert Explanation</string>
+    <string name="dialog_current_status_decision">Current Status and Decision:</string>
+    <string name="dialog_primary_reason">Primary Reason:</string>
+    <string name="dialog_primary_reason_default">Safety threshold exceeded; urgent precaution required.</string>
+    <string name="dialog_policy_rules_reasons">Policy Rules and Reasons:</string>
+    <string name="dialog_heat_index_format">Heat Index: %1$s°C</string>
+    <string name="dialog_aqi_format">US AQI: %1$s</string>
+    <string name="dialog_dismiss">Dismiss</string>
+    <string name="dialog_close">Close</string>
+
+    <string name="dialog_policy_rules_title">Model School Outdoor Policy v1.2</string>
+    <string name="dialog_policy_effective_date">Effective: Oct 1, 2026 • Authority: AirSafe Protocol</string>
+    <string name="dialog_policy_active_decision">Current Active Decision:</string>
+    <string name="dialog_policy_governed_tag">Governed by Policy v1.2</string>
+    <string name="dialog_governing_safety_rules">Governing Safety Rules:</string>
+
+    <string name="dialog_add_note_title">Add Activity Context Note</string>
+    <string name="dialog_target_activity">Target Activity: %1$s</string>
+    <string name="dialog_note_description">Note Description</string>
+    <string name="dialog_note_placeholder">e.g. Two students experiencing mild asthma/coughing</string>
+    <string name="dialog_note_respiratory_warning">⚠️ Note mentions asthma/respiratory symptoms. Policy v1.2 (Rule 5) will automatically step up safety caution level by 1 tier immediately.</string>
+    <string name="dialog_note_cancel">Cancel</string>
+    <string name="dialog_note_submit">Save Note</string>
+
+    <string name="dialog_override_confirm_title">Coordinator Emergency Override</string>
+    <string name="dialog_override_select_decision">Target Decision:</string>
+    <string name="dialog_override_reason_label">Written Justification (Mandatory):</string>
+    <string name="dialog_override_reason_placeholder">Minimum 5 characters reason...</string>
+    <string name="dialog_override_reason_error">Reason must be at least 5 characters</string>
+    <string name="dialog_override_cancel">Cancel</string>
+    <string name="dialog_override_confirm">Confirm Override</string>
+
+    <string name="dialog_routine_title">Routine &amp; Intensity Configuration</string>
+    <string name="dialog_routine_current_label">Current Activity:</string>
+    <string name="dialog_routine_next_label">Next Activity:</string>
+    <string name="dialog_routine_intensity_label">Physical Intensity:</string>
+    <string name="dialog_routine_intensity_hint">Exertion level directly drives Policy v1.2 heat safety bounds.</string>
+    <string name="dialog_routine_light_reason_label">Reason for Light PE (Mandatory)</string>
+    <string name="dialog_routine_light_reason_placeholder">Minimum 5 characters reason...</string>
+    <string name="dialog_routine_target_class_duration">Target Class &amp; Duration:</string>
+    <string name="dialog_routine_class_label">Class</string>
+    <string name="dialog_routine_duration_label">Duration (mins)</string>
+    <string name="dialog_routine_duration_error">Please specify positive duration in minutes</string>
+    <string name="dialog_routine_save">Save Routine</string>
+
+    <string name="dialog_metric_heat_index_rules">Heat Index &amp; Environmental Rules</string>
+    <string name="dialog_metric_aqi_rules">Air Quality Index (US AQI &amp; PM2.5)</string>
+    <string name="dialog_metric_source_reliability">Data Source &amp; Reliability</string>
+    <string name="dialog_metric_current_hi_format">Current Observed Heat Index: %1$s°C</string>
+    <string name="dialog_metric_hi_guidance">• &lt;32°C: Safe outdoor exertion (Green)\n• 32-37.9°C: Hydration &amp; shaded breaks required (Yellow)\n• 38-39.9°C: Modify/reduce intensity, max 30 mins (Orange)\n• ≥40°C: MOVE INDOORS IMMEDIATELY (Red)</string>
+    <string name="dialog_metric_current_aqi_format">Current US AQI: %1$s (PM2.5: %2$s µg/m³)</string>
+    <string name="dialog_metric_aqi_guidance">• 0-50: Good (Green)\n• 51-100: Moderate (Yellow)\n• 101-150: Unhealthy for Sensitive Groups (Modify - Orange)\n• 151-200: Unhealthy (Move Indoors - Red)\n• ≥201: Hazardous (Move Indoors - Red)</string>
+    <string name="dialog_metric_source_confidence">Telemetry Confidence Level: %1$s%%</string>
+    <string name="dialog_metric_source_details">• Primary Source: Campus Environmental IoT Sensor\n• Fallback: Open-Meteo High-Resolution Model (Capped)\n• Recalculation: Every 45s foreground polling</string>
+
+    <string name="dialog_override_title_justification">Override with Justification</string>
+    <string name="dialog_override_description">This override is temporary for this session and recorded in audit logs.</string>
+    <string name="dialog_override_target_decision">Target Decision:</string>
+    <string name="dialog_override_reason">Override Reason</string>
+    <string name="dialog_routine_desc_config">Configure current session activity, physical intensity, and class:</string>
+    <string name="dialog_routine_pe_warning">⚠️ Policy Warning: Under Model School Policy v1.2, PE / Sports is standardly classified as Vigorous. Setting PE to Light may compromise student safety. Please provide a mandatory justification below:</string>
+    <string name="dialog_routine_pe_error">Please provide a valid reason for Light PE (min 5 characters)</string>
+    <string name="source_modeled_satellite">Modeled (Open-Meteo Satellite)</string>
+    <string name="source_measured_iot">Measured (Campus IoT Sensor)</string>
+    <string name="dialog_metric_source_format">Source: %1$s (Confidence: %2$s%%)</string>
+    <string name="dialog_metric_source_policy_desc">Policy v1.2 Section 4 (Data Fallback &amp; Caps):\nDirect on-campus IoT sensors take top precedence when fresh. If offline or older than 90 minutes, the engine automatically falls back to Open-Meteo modeled telemetry with deterministic safety caps.</string>
+    <string name="dialog_metric_hi_full_guidance">Methodology: Rothfusz regression equation combining temperature and relative humidity.\n\nPolicy v1.3 Table 2 Environmental Thresholds:\n• &lt; 27°C: Safe to proceed\n• 27°C–31°C: Precautions with 20-min hydration breaks\n• 32°C–38°C: Modify activity (Mandatory shade, max 30 mins)\n• &gt;= 39°C: Move indoors immediately</string>
+    <string name="dialog_metric_aqi_full_guidance">Methodology: EPA US AQI standard derived from PM2.5 particulate concentration.\n\nPolicy v1.3 Table 1 Thresholds:\n• 0–50: Good (Safe to proceed)\n• 51–100: Moderate (Precautions for vigorous sports)\n• 101–150: Sensitive groups impacted (Modify activity - reduced duration)\n• &gt;= 151: Critical / Unhealthy (Move indoors immediately)</string>
+
+    <string name="policy_rule_1">Rule 1: Heat &amp; AQI Thresholds (Table 1 &amp; 2)</string>
+    <string name="policy_rule_2">Rule 2: Activity Intensity Modifiers (Light, Moderate, Vigorous)</string>
+    <string name="policy_rule_3">Rule 3: Respiratory Vulnerability Step-Up (Asthma Protection)</string>
+    <string name="policy_rule_4">Rule 4: Data Freshness Floor (Fail-closed on stale data)</string>
+    <string name="policy_rule_5">Rule 5: Alert Triggers &amp; Quiet Hours (21:00–06:00 BST)</string>
+    <string name="policy_rule_6">Rule 6: Coordinator Override Governance (Audit Trail)</string>
+
+    <!-- Step 5.1 PE Downgrade Warning Dialog -->
+    <string name="pe_downgrade_dialog_title">PE Downgrade Warning</string>
+    <string name="pe_downgrade_dialog_warning">Under Model School Policy v1.2, Physical Education (PE) and sports activities are standardly classified as Vigorous. Downgrading to Light may compromise student safety. Please provide a mandatory justification below:</string>
+    <string name="pe_downgrade_dialog_confirm">Confirm Downgrade</string>
+
+    <!-- Steps 5.2 - 5.4, 7.4 School Analytics & Reports -->
+    <string name="analytics_title">School Analytics &amp; Reports</string>
+    <string name="analytics_subtitle">Weekly Safety Review &amp; Decision Impact</string>
+    <string name="analytics_lost_time_title">Lost Outdoor Activity Time</string>
+    <string name="analytics_unit_minutes">minutes</string>
+    <string name="analytics_unit_hours">hrs</string>
+    <string name="analytics_comparison_less">%1$s minutes less lost compared to previous week.</string>
+    <string name="analytics_comparison_more">%1$s minutes more lost compared to previous week.</string>
+    <string name="analytics_above_threshold">Above Threshold</string>
+    <string name="analytics_measured_ratio">Measured Ratio</string>
+    <string name="analytics_decision_breakdown">Decision Breakdown &amp; Overrides</string>
+    <string name="analytics_row_safe">Safe</string>
+    <string name="analytics_row_caution">Caution Sessions</string>
+    <string name="analytics_row_move_indoors">Move Indoors</string>
+    <string name="analytics_row_overrides">Coordinator Overrides</string>
+    <string name="analytics_no_audit_records">No coordinator override audit records found.</string>
+    <string name="analytics_reason_prefix">Reason: %1$s</string>
+    <string name="analytics_by_coordinator_prefix">By: %1$s</string>
+    <string name="analytics_relaxes_floor_warning">⚠️ Relaxes Floor</string>
+    <string name="analytics_expires_prefix">Expires: %1$s</string>
+    <string name="analytics_share_report">Share Weekly Report</string>
+    <string name="analytics_export_csv">Export Row-Level CSV</string>
+
+    <!-- Step 5.5 & 6.2 Telemetry Header and Weather Fallback -->
+    <string name="data_not_found">Data Not Found</string>
+    <string name="status_modeled_data">Modeled Data</string>
+    <string name="telemetry_modeled_header">Modeled Data (Open-Meteo)</string>
+    <string name="telemetry_verified_header">Verified Ground Telemetry</string>
+    <string name="grounding_modeled_hi_format">Modeled Heat Index: %1$s°C</string>
+    <string name="grounding_verified_hi_format">Verified Heat Index: %1$s°C</string>
+    <string name="status_live_format">Live • %1$s</string>
+    <string name="status_offline_format">Offline • %1$s</string>
+    <string name="trends_school_hours_shading">School Hours Shading: 8:00 AM – 4:00 PM (Asia/Dhaka)</string>
+    <string name="trends_telemetry_title_format">Trend Telemetry (%1$s)</string>
+    <string name="trends_field_vs_courtyard">Field vs Courtyard Comparison:</string>
+
+    <!-- Step 5.6 Push Notification (FCM) & Local Notification Notice -->
+    <string name="banner_fcm_fallback_warning">Push notifications (FCM) unavailable (missing google-services.json). Alerts are restricted to in-app local notifications only.</string>
+
+    <!-- Step 7.4 Additional Localized UI & ViewModel Strings -->
+    <string name="lang_toggle_label">বাংলা</string>
+    <string name="login_btn_signin">Sign In</string>
+    <string name="login_footer_notice">⚠️ Invite-only access. Your role and school are assigned by school administration.</string>
+    <string name="staff_subtitle_scoped">Scoped strictly to your school. Cross-tenant invites blocked.</string>
+    <string name="staff_btn_send_invite">Send Invitation</string>
+    <string name="staff_email_placeholder">teacher.email@dms.edu.bd</string>
+    <string name="staff_active_members_title">Active Staff Members (%1$d):</string>
+    <string name="err_coordinator_auth_required">Failed to save: Coordinator authorization required</string>
+    <string name="err_override_reason_min_length">Failed to save: Override reason must be at least 5 characters</string>
+    <string name="err_override_sync_warning">Override Sync Warning (%1$s): Applied locally. (%2$s)</string>
+    <string name="err_trends_empty">No verified trend telemetry available for the selected range.</string>
+    <string name="err_trends_load_failed">Failed to load trends (%1$s): Please retry.</string>
+    <string name="note_respiratory_caution">Several students have respiratory/asthma caution</string>
+    <string name="err_note_sync_warning">API Sync Warning (%1$s): Note applied locally. (%2$s)</string>
+    <string name="err_routine_sync_warning">Routine Sync Warning (%1$s): Applied locally. (%2$s)</string>
+    <string name="err_invite_coordinator_only">Failed to save: Coordinator authorization required</string>
+    <string name="err_invite_valid_email">Failed to save: Valid email required</string>
+    <string name="err_invite_send_failed">Failed to save: Staff invitation could not be sent (%1$s: %2$s)</string>
+    <string name="err_server_generic">Server error</string>
+    <string name="analytics_share_header">📊 AirSafe Schools Weekly Report</string>
+    <string name="analytics_share_week">Week: %1$s</string>
+    <string name="analytics_share_lost_mins">Lost Outdoor Minutes: %1$s mins</string>
+    <string name="analytics_share_hours_above">Hours Above Safety Threshold: %1$s hrs</string>
+    <string name="analytics_share_safe_sessions">Safe Sessions: %1$s</string>
+    <string name="analytics_share_move_indoors">Move Indoors Sessions: %1$s</string>
+    <string name="analytics_share_overrides">Logged Overrides: %1$s</string>
+    <string name="analytics_share_measured_ratio">Measured Sensor Ratio: %1$s%%</string>
+    <string name="analytics_share_chooser">Share Weekly Report</string>
+    <string name="analytics_export_csv_chooser">Export Row-Level CSV</string>
+    <string name="export_no_app_found">No app available to open or share this report.</string>
+    <string name="export_failed">Unable to export report. Please try again.</string>
+    <string name="export_empty_data">No analytics data available to export.</string>
+    <string name="assistant_offline_banner">Notice: Offline/Stale Mode—Assistant is operating on local cached safety policies.</string>
+    <string name="assistant_reasoning_steps">Reasoning &amp; Grounding Steps:</string>
+    <string name="assistant_citation_prefix">Citation: %1$s</string>
+    <string name="assistant_quick_pe_question">Can we hold PE class outside today?</string>
+    <string name="assistant_quick_heat_question">At what heat index must we move indoors?</string>
+    <string name="assistant_step_prompt_ok">Prompt &amp; security check passed...</string>
+    <string name="assistant_step_tool_call">Called tool: %1$s</string>
+    <string name="assistant_step_policy_verified">Policy v1.2 grounding verified...</string>
+    <string name="assistant_server_unavailable">Assistant server unavailable (%1$s): Offline safety policy applied.</string>
+    <string name="assistant_fallback_no_data">Verified sensor telemetry is currently unavailable for your school. Per Policy v1.2 Section 4, outdoor activity cannot be declared safe without verified data.</string>
+    <string name="assistant_fallback_verified">Current verified Heat Index is %1$s°C and AQI is %2$s. Under Policy v1.2, the mandatory decision is: %3$s.</string>
+    <string name="assistant_citation_excerpt_label">Exact Policy Excerpt (Policy v1.2):</string>
+    <string name="btn_close_ok">Close</string>
+    <string name="pdf_report_title">AirSafe Schools • Weekly Safety Evaluation Report</string>
+    <string name="pdf_eval_week">Evaluation Week: %1$s</string>
+    <string name="pdf_generated_at">Report Generated: %1$s</string>
+    <string name="pdf_sec1_title">1. Executive Summary &amp; Safety KPIs</string>
+    <string name="pdf_kpi_lost_mins">Lost Outdoor Minutes</string>
+    <string name="pdf_kpi_hours_above">Hours Above Safety Threshold</string>
+    <string name="pdf_kpi_total_sessions">Total Sessions Analyzed</string>
+    <string name="pdf_kpi_measured_ratio">Measured Sensor Telemetry</string>
+    <string name="pdf_sec2_title">2. Policy Decisions &amp; Operational Breakdown</string>
+    <string name="pdf_row_safe">Safe Sessions (Green)</string>
+    <string name="pdf_row_caution">Caution Sessions (Yellow/Orange)</string>
+    <string name="pdf_row_move_indoors">Critical Move Indoors (Red)</string>
+    <string name="pdf_row_overrides">Logged Coordinator Overrides</string>
+    <string name="pdf_sec3_title">3. Compliance &amp; Legal Assurance</string>
+    <string name="pdf_note_1">• Prepared deterministically under Model School Outdoor Activity Policy v1.2 based on real-time sensors &amp; forecast.</string>
+    <string name="pdf_note_2">• All coordinator overrides are recorded to immutable audit trails and subject to School Governing Board review.</string>
+    <string name="pdf_note_3">• The AirSafe Platform maintains tamper-evident records to safeguard student respiratory health &amp; heat safety.</string>
+    <string name="pdf_share_subject">AirSafe Schools Weekly Safety Report (%1$s)</string>
+    <string name="pdf_share_chooser">Share Weekly Safety Report (PDF)</string>
+    <string name="trends_range_24h">24 Hours</string>
+    <string name="trends_range_7d">7 Days</string>
+    <string name="trends_range_30d">30 Days</string>
+    <string name="trends_site_field">Field</string>
+    <string name="trends_site_field_vs_courtyard">Field vs Courtyard</string>
+    <string name="trends_view_chart">Chart</string>
+    <string name="trends_view_table">Table</string>
+    <string name="trends_col_time">Time</string>
+    <string name="trends_col_heat_index">Heat Index</string>
+    <string name="trends_col_status">Status</string>
+    <string name="trends_detail_aqi">Air Quality Index (AQI):</string>
+    <string name="trends_detail_pm25">PM2.5 Concentration:</string>
+    <string name="trends_detail_heat_index">Heat Index:</string>
+    <string name="trends_detail_ambient_temp">Ambient Temp:</string>
+    <string name="trends_detail_courtyard_aqi">Courtyard AQI:</string>
+    <string name="trends_detail_courtyard_hi">Courtyard Heat Index:</string>
+    <string name="trends_detail_policy_tier">Policy Tier:</string>
+    <string name="trends_detail_policy_note">Policy v1.2: Maintain regular hydration breaks and adjust activity intensity accordingly.</string>
+    <string name="trends_tier_unhealthy">Unhealthy</string>
+    <string name="trends_tier_sensitive">Sensitive</string>
+    <string name="trends_tier_moderate">Moderate</string>
+    <string name="trends_tier_safe">Safe</string>
+    <string name="trends_empty_data">No trend data available</string>
+    <string name="trends_legend_field_aqi">Field AQI</string>
+    <string name="trends_legend_courtyard_aqi">Courtyard AQI</string>
+    <string name="trends_legend_heat_index">Heat Index (°C)</string>
+    <string name="notif_urgent_move_indoors_title">🚨 Urgent AirSafe Alert: Move Indoors</string>
+
+    <!-- Section 7.5 Resource Extractions (No Inline Language Ternary) -->
+    <string name="trends_default_period">24-Hour Trend</string>
+    <string name="data_freshness_just_now">Just now</string>
+    <string name="data_freshness_mins_ago">%1$s mins ago</string>
+    <string name="data_freshness_hrs_ago">%1$s hrs ago</string>
+    <string name="data_freshness_hrs_mins_ago">%1$s hrs %2$s mins ago</string>
+    <string name="guidance_modify_format">Max %1$s mins in shade. 20-min hydration breaks.</string>
+    <string name="reason_with_metrics_format">Reason: %1$s — %2$s required by policy</string>
+    <string name="reason_policy_only_format">Reason: %1$s required by safety policy</string>
+    <string name="reason_heat_index_part">Heat Index %1$s°C</string>
+    <string name="reason_aqi_part">AQI %1$s</string>
+    <string name="local_fail_closed_reason">Sensor or weather telemetry unavailable — fail-closed per Policy v1.2. Please contact your coordinator.</string>
+    <string name="local_override_emergency_default">Coordinator emergency order</string>
+    <string name="local_heat_extreme_format">Extreme Heat (Heat Index %1$s°C &gt;= 40°C)</string>
+    <string name="local_aqi_hazardous_format">Very Unhealthy Air Quality (AQI %1$s &gt;= 201)</string>
+    <string name="local_mandatory_move_indoors_format">🚨 Mandatory Safety Rule (Move Indoors): %1$s</string>
+    <string name="local_override_modify_default">Coordinator modification</string>
+    <string name="local_override_modify_format">Coordinator Override (Modify Activity): %1$s</string>
+    <string name="local_high_heat_modify_format">High Heat Index (%1$s°C): Policy v1.2 step-up to Modify Activity</string>
+    <string name="local_unhealthy_aqi_modify_format">Unhealthy Air Quality (AQI %1$s): Policy v1.2 step-up to Modify Activity</string>
+    <string name="local_respiratory_modify">Sensitive students (Asthma/Respiratory): Policy v1.2 Rule 5 step-up requires modifying activity (max 30m, mandatory shade)</string>
+    <string name="local_vigorous_modify">Vigorous Physical Exercise: Policy v1.2 steps up to Modify Activity (max 30 mins, shade mandatory)</string>
+    <string name="local_proceed_safe">Weather and air quality fully safe — proceed with normal outdoor activities</string>
+    <string name="local_precautions_tolerable">Heat index and air quality within tolerable limits — maintain hydration and shade during PE class</string>
+    <string name="local_mandatory_shade_break">Mandatory shade breaks required</string>
+    <string name="local_just_now_updated">Just now</string>
+    <string name="local_no_activity_data">No data available</string>
+    <string name="local_measured_iot_label">Measured Campus IoT Sensor</string>
+    <string name="local_forecast_stable_4h">No decision change expected in the next 4 hours (Stable)</string>
+    <string name="target_class_all">All Classes</string>
+    <string name="class_grade_5">Class 5</string>
+    <string name="class_grade_6">Class 6</string>
+    <string name="class_grade_7">Class 7</string>
+    <string name="class_grade_8">Class 8</string>
+    <string name="class_grade_9">Class 9</string>
+    <string name="class_grade_10">Class 10</string>
+    <string name="err_auth_invalid_credentials_format">Invalid credentials (HTTP %1$d). Previous session cleared.</string>
+    <string name="err_auth_rate_limited">Too many login attempts (HTTP 429). Please try again later.</string>
+    <string name="err_auth_network_failed_format">Authentication failed (%1$s): Check credentials or server connection at %2$s.</string>
+    <string name="err_connect_exception_format">Connection failed (ConnectException): Ensure server is running and reachable. (%1$s)</string>
+    <string name="err_unknown_host_format">Host not found (UnknownHostException): Verify IP/domain configuration. (%1$s)</string>
+    <string name="err_socket_timeout">Socket Timeout: Server did not respond in time.</string>
+    <string name="err_http_code_format">HTTP Error [%1$d]: %2$s</string>
+    <string name="local_severe_hazard_sim">🚨 Severe Hazard: US AQI 185 &amp; Heat Index 44.5°C exceed critical safety floor. Move all outdoor activities indoors immediately.</string>
+    <string name="local_severe_hazard_fallback_body">Conditions have deteriorated; all activities must move indoors.</string>
+    <string name="assistant_thinking_status">Thinking...</string>
+    <string name="assistant_source_rule_based">Rule-based Answer</string>
+    <string name="policy_title_friendly">School Outdoor Safety Policy</string>
+    <string name="policy_excerpt_offline_no_data">When sensor and modeled telemetry are unavailable, students remain indoors for safety.</string>
+    <string name="policy_excerpt_offline_rules">All outdoor activities are governed by physical intensity, air quality (AQI), and Heat Index thresholds.</string>
+    <string name="policy_excerpt_default_rules">Safety thresholds are evaluated using campus Heat Index, Air Quality Index, and activity intensity.</string>
+    <string name="activity_pe_football">Physical Education &amp; Football</string>
+    <string name="activity_general_assembly">General Assembly</string>
+    <string name="activity_recess_break">Outdoor Recess &amp; Break</string>
+    <string name="activity_outdoor_sports">Outdoor Sports &amp; Games</string>
+    <string name="activity_outdoor_default">Outdoor Activity</string>
+    <string name="note_asthma_sensitive_present">Asthma-sensitive students are present in this class</string>
+    <string name="reason_students_weak">Some students are physically weak; extra caution advised</string>
+    <string name="note_general_health_caution">Student health caution noted by teacher</string>
+</resources>

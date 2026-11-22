@@ -1,0 +1,344 @@
+package com.airsafe.schools.data.api
+
+import android.content.Context
+import com.airsafe.schools.BuildConfig
+import com.airsafe.schools.data.model.AnalyticsResponseDto
+import com.airsafe.schools.data.model.AssistantChatRequest
+import com.airsafe.schools.data.model.AssistantChatResponse
+import com.airsafe.schools.data.model.DecisionResponse
+import com.airsafe.schools.data.model.LoginRequest
+import com.airsafe.schools.data.model.LoginResponse
+import com.airsafe.schools.data.model.NoteRequest
+import com.airsafe.schools.data.model.NotesListResponse
+import com.airsafe.schools.data.model.OverrideAuditResponse
+import com.airsafe.schools.data.model.OverrideRequest
+import com.airsafe.schools.data.model.RoutineUpdateRequest
+import com.airsafe.schools.data.model.SensorSitesResponse
+import com.airsafe.schools.data.model.StaffInviteRequest
+import com.airsafe.schools.data.model.StaffListResponse
+import com.airsafe.schools.data.model.TrendsResponseDto
+import com.airsafe.schools.util.AppLog
+import com.google.gson.Gson
+import com.google.gson.JsonParser
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
+import okhttp3.ResponseBody.Companion.toResponseBody
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.sse.EventSource
+import okhttp3.sse.EventSourceListener
+import okhttp3.sse.EventSources
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
+import java.util.concurrent.TimeUnit
+
+interface AirSafeApiService {
+    @POST("auth/login")
+    suspend fun login(
+        @Body request: LoginRequest,
+    ): LoginResponse
+
+    @GET("schools/{schoolId}/current-decision")
+    suspend fun getCurrentDecision(
+        @Path("schoolId") schoolId: String,
+    ): DecisionResponse
+
+    @GET("schools/{schoolId}/staff")
+    suspend fun getStaff(
+        @Path("schoolId") schoolId: String,
+    ): StaffListResponse
+
+    @GET("schools/{schoolId}/sensor-sites")
+    suspend fun getSensorSites(
+        @Path("schoolId") schoolId: String,
+    ): SensorSitesResponse
+
+    @GET("schools/{schoolId}/analytics")
+    suspend fun getAnalytics(
+        @Path("schoolId") schoolId: String,
+    ): AnalyticsResponseDto
+
+    @GET("schools/{schoolId}/trends")
+    suspend fun getTrends(
+        @Path("schoolId") schoolId: String,
+        @Query("range") range: String = "24h",
+        @Query("site_id") siteId: String? = null,
+        @Query("compare_site_id") compareSiteId: String? = null,
+    ): TrendsResponseDto
+
+    @POST("schools/{schoolId}/routines")
+    suspend fun updateRoutine(
+        @Path("schoolId") schoolId: String,
+        @Body request: RoutineUpdateRequest,
+    ): Map<String, Any>
+
+    @POST("schools/{schoolId}/overrides")
+    suspend fun submitOverride(
+        @Path("schoolId") schoolId: String,
+        @Body request: OverrideRequest,
+    ): Map<String, Any>
+
+    @GET("schools/{schoolId}/overrides/audit")
+    suspend fun getOverrideAuditLogs(
+        @Path("schoolId") schoolId: String,
+    ): OverrideAuditResponse
+
+    @POST("schools/{schoolId}/notes")
+    suspend fun submitNote(
+        @Path("schoolId") schoolId: String,
+        @Body request: NoteRequest,
+    ): Map<String, Any>
+
+    @GET("schools/{schoolId}/notes")
+    suspend fun getNotes(
+        @Path("schoolId") schoolId: String,
+    ): NotesListResponse
+
+    @POST("schools/{schoolId}/staff/invite")
+    suspend fun inviteStaff(
+        @Path("schoolId") schoolId: String,
+        @Body request: StaffInviteRequest,
+    ): Map<String, Any>
+
+    @POST("schools/{schoolId}/assistant/chat")
+    suspend fun askAssistant(
+        @Path("schoolId") schoolId: String,
+        @Body request: AssistantChatRequest,
+    ): AssistantChatResponse
+}
+
+object AirSafeApiClient {
+    private const val TAG = "API_DEBUG"
+    private const val PREFS_NAME = "airsafe_api_config"
+    private const val KEY_BASE_URL = "base_url"
+
+    // AWS Live API Gateway Endpoint (ap-southeast-2 Sydney dev stage)
+    const val AWS_LIVE_BASE_URL = "https://263c1j9hxk.execute-api.ap-southeast-2.amazonaws.com/dev/"
+    const val AWS_CHAT_STREAM_URL = "https://o7dvanygg4jhuq4ml5kr2avnny0mgrwp.lambda-url.ap-southeast-2.on.aws/"
+    const val DEFAULT_BASE_URL = AWS_LIVE_BASE_URL
+
+    // Local development endpoints - strictly restricted to debug builds (S5)
+    val USB_BASE_URL: String = BuildConfig.USB_BASE_URL
+    val LAN_BASE_URL: String = BuildConfig.LAN_BASE_URL
+
+    @Volatile
+    private var currentBaseUrl: String = DEFAULT_BASE_URL
+
+    @Volatile
+    var authToken: String? = null
+
+    @Volatile
+    private var _service: AirSafeApiService? = null
+
+    val service: AirSafeApiService
+        get() {
+            return _service ?: synchronized(this) {
+                _service ?: buildService(currentBaseUrl).also { _service = it }
+            }
+        }
+
+    fun init(context: Context) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val savedUrl = prefs.getString(KEY_BASE_URL, DEFAULT_BASE_URL) ?: DEFAULT_BASE_URL
+        // Force upgrade legacy local/emulator URLs or cleartext URLs in release to live AWS endpoint (S5)
+        val isLocalOrCleartext =
+            savedUrl.contains("127.0.0.1") ||
+                savedUrl.contains("localhost") ||
+                savedUrl.contains("192.168.") ||
+                (!BuildConfig.DEBUG && savedUrl.startsWith("http://"))
+
+        val targetUrl =
+            if (!BuildConfig.DEBUG && isLocalOrCleartext) {
+                prefs.edit().putString(KEY_BASE_URL, AWS_LIVE_BASE_URL).apply()
+                AWS_LIVE_BASE_URL
+            } else if (savedUrl.contains("127.0.0.1") || savedUrl.contains("localhost") || savedUrl.contains("192.168.")) {
+                if (BuildConfig.DEBUG && savedUrl.isNotBlank()) savedUrl else AWS_LIVE_BASE_URL
+            } else {
+                savedUrl
+            }
+        setBaseUrl(targetUrl, context)
+    }
+
+    fun getBaseUrl(): String = currentBaseUrl
+
+    @Synchronized
+    fun setBaseUrl(
+        newUrl: String,
+        context: Context? = null,
+    ) {
+        var normalized = newUrl.trim()
+        if (normalized.isBlank()) {
+            normalized = DEFAULT_BASE_URL
+        }
+        if (!normalized.startsWith("http://") && !normalized.startsWith("https://")) {
+            normalized = if (BuildConfig.DEBUG) "http://$normalized" else "https://$normalized"
+        }
+        if (!normalized.endsWith("/")) {
+            normalized = "$normalized/"
+        }
+
+        // In release builds, strictly reject cleartext HTTP URLs (S5)
+        if (!BuildConfig.DEBUG && normalized.startsWith("http://")) {
+            AppLog.w(TAG, "Cleartext HTTP URL rejected in release build. Reverting to AWS_LIVE_BASE_URL.")
+            normalized = AWS_LIVE_BASE_URL
+        }
+
+        currentBaseUrl = normalized
+        _service = buildService(normalized)
+        AppLog.d(TAG, "AirSafeApiClient Base URL configured.")
+
+        context?.let { ctx ->
+            try {
+                ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                    .edit()
+                    .putString(KEY_BASE_URL, normalized)
+                    .apply()
+            } catch (e: Exception) {
+                AppLog.e(TAG, "Failed to persist base URL: ${e.message}", e)
+            }
+        }
+    }
+
+    private fun buildService(baseUrl: String): AirSafeApiService {
+        // S6: Completely disable HTTP logging in release builds, and avoid BODY logging in debug to protect tokens/passwords
+        val logging =
+            HttpLoggingInterceptor { message ->
+                AppLog.d(TAG, "[HTTP] $message")
+            }.apply {
+                level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BASIC else HttpLoggingInterceptor.Level.NONE
+            }
+
+        val client =
+            OkHttpClient.Builder()
+                .addInterceptor { chain ->
+                    val original = chain.request()
+                    val reqBuilder = original.newBuilder()
+                    val token = authToken
+                    if (!token.isNullOrBlank()) {
+                        reqBuilder.header("Authorization", "Bearer $token")
+                    }
+                    // Issue 2: Explicitly request and enforce UTF-8 charset to prevent Bangla encoding artifacts (????)
+                    reqBuilder.header("Accept", "application/json; charset=utf-8")
+                    reqBuilder.header("Accept-Charset", "utf-8")
+                    AppLog.d(TAG, "--> ${original.method} ${original.url}")
+                    val response = chain.proceed(reqBuilder.build())
+                    AppLog.d(TAG, "<-- ${response.code} ${original.url} (${response.message})")
+                    if (response.code == 401 || response.code == 403) {
+                        authToken = null
+                    }
+
+                    val body = response.body
+                    if (body != null) {
+                        val contentType = body.contentType()
+                        val type = contentType?.type ?: "application"
+                        val subtype = contentType?.subtype ?: "json"
+                        val utf8MediaType = "$type/$subtype; charset=utf-8".toMediaTypeOrNull()
+                        val bytes = body.bytes()
+                        val newBody = bytes.toResponseBody(utf8MediaType)
+                        return@addInterceptor response.newBuilder().body(newBody).build()
+                    }
+                    response
+                }
+                .addInterceptor(logging)
+                .connectTimeout(8, TimeUnit.SECONDS)
+                .readTimeout(8, TimeUnit.SECONDS)
+                .writeTimeout(8, TimeUnit.SECONDS)
+                .build()
+
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(AirSafeApiService::class.java)
+    }
+
+    fun streamAssistantChat(
+        schoolId: String,
+        request: AssistantChatRequest,
+        onToolCall: (String) -> Unit,
+        onTokenDelta: (String) -> Unit,
+        onComplete: (AssistantChatResponse) -> Unit,
+        onError: (Throwable) -> Unit,
+    ): EventSource {
+        val gson = Gson()
+        val streamReq = request.copy(stream = true)
+        val jsonBody = gson.toJson(streamReq)
+        val mediaType = "application/json; charset=utf-8".toMediaTypeOrNull()
+        val streamBase =
+            if (currentBaseUrl == AWS_LIVE_BASE_URL) AWS_CHAT_STREAM_URL else currentBaseUrl
+        val url = "${streamBase}schools/$schoolId/assistant/chat"
+
+        val sseClient =
+            OkHttpClient.Builder()
+                .connectTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(45, TimeUnit.SECONDS)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .build()
+
+        val reqBuilder =
+            Request.Builder()
+                .url(url)
+                .post(jsonBody.toRequestBody(mediaType))
+                .header("Accept", "text/event-stream")
+                .header("Cache-Control", "no-cache")
+
+        val token = authToken
+        if (!token.isNullOrBlank()) {
+            reqBuilder.header("Authorization", "Bearer $token")
+        }
+
+        val listener =
+            object : EventSourceListener() {
+                override fun onEvent(
+                    eventSource: EventSource,
+                    id: String?,
+                    type: String?,
+                    data: String,
+                ) {
+                    try {
+                        when (type) {
+                            "tool_call" -> {
+                                val obj = JsonParser.parseString(data).asJsonObject
+                                val toolName = obj.get("name")?.asString
+                                if (!toolName.isNullOrBlank()) {
+                                    onToolCall(toolName)
+                                }
+                            }
+                            "token" -> {
+                                val obj = JsonParser.parseString(data).asJsonObject
+                                val delta = obj.get("delta")?.asString
+                                if (!delta.isNullOrEmpty()) {
+                                    onTokenDelta(delta)
+                                }
+                            }
+                            "completion" -> {
+                                val parsed = gson.fromJson(data, AssistantChatResponse::class.java)
+                                onComplete(parsed)
+                            }
+                        }
+                    } catch (e: Exception) {
+                        AppLog.w(TAG, "SSE event parse warning: ${e.message}")
+                    }
+                }
+
+                override fun onFailure(
+                    eventSource: EventSource,
+                    t: Throwable?,
+                    response: Response?,
+                ) {
+                    val err = t ?: RuntimeException("SSE HTTP ${response?.code ?: 500}")
+                    onError(err)
+                }
+            }
+
+        return EventSources.createFactory(sseClient).newEventSource(reqBuilder.build(), listener)
+    }
+}

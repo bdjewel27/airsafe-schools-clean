@@ -1,0 +1,167 @@
+name: AirSafe CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+    name: Mandatory Gitleaks Secret Scanner (Required Gate)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Gitleaks (Fail-Closed)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+
+  lint-and-test:
+    name: Lint Gate, Services & Evals
+    needs: [security-scan]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # 1. Root Quality & Lint Gate (Fail-Closed on any warning)
+      - name: Strict TypeScript & ESLint Gate
+        run: |
+          npm ci
+          npm run lint -- --max-warnings 0
+
+      # 2. Simulator Tests
+      - name: Test Simulator
+        working-directory: simulator
+        run: |
+          npm ci
+          npm test
+          npm run build
+
+      # 3. Poller Tests
+      - name: Test Poller Service
+        working-directory: services/poller
+        run: |
+          npm ci
+          npm test
+          npm run build
+
+      # 4. REST API Tests
+      - name: Test REST API Service
+        working-directory: services/api
+        run: |
+          npm ci
+          npm test
+          npm run build
+
+      # 5. MCP Service Tests
+      - name: Test MCP Server
+        working-directory: services/mcp
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      # 6. Root MCP & Shared Tool Library Tests
+      - name: Test Shared MCP Tool Library
+        working-directory: mcp
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      # 7. AI Decision & Policy Golden Evals
+      - name: Run AI Golden Evaluation Benchmark
+        run: node evals/run-evals.js
+
+      # 8. AI Assistant Off-Topic Refusal Live Smoke Test
+      - name: AI Assistant Off-Topic Refusal Live Smoke Test
+        run: node scripts/smoke-test-ai-offtopic.js --require-live
+
+      # 9. Multi-Tenant Isolation, SSE Stream & MCP Security Smoke Test
+      - name: Multi-Tenant Isolation, SSE Stream & MCP Security Smoke Test
+        run: node scripts/smoke-test-tenant-isolation.js
+
+  infra-synth:
+    name: CDK Infrastructure Synth
+    needs: [lint-and-test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # CDK lambda assets require dist/ bundles from services/poller and services/api
+      - name: Build Poller Service Asset
+        working-directory: services/poller
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build REST API Service Asset
+        working-directory: services/api
+        run: |
+          npm ci
+          npm run build
+
+      - name: Install CDK Dependencies
+        working-directory: infra
+        run: npm ci
+
+      - name: Synthesize CDK Templates
+        working-directory: infra
+        run: npx cdk synth
+
+  android-build-and-verify:
+    name: Android Release Build, Lint, Detekt & Tests
+    needs: [security-scan, lint-and-test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x android/gradlew
+
+      - name: Run Detekt and KtLint
+        working-directory: android
+        run: ./gradlew detekt ktlintCheck --continue
+
+      - name: Verify Release Keystore Secrets (Fail-Closed)
+        run: |
+          if [ -z "${{ secrets.AIRSAFE_KEYSTORE_PASSWORD }}" ] || [ -z "${{ secrets.AIRSAFE_KEY_PASSWORD }}" ]; then
+            echo "::error::Hard Gate 1 Violation: AIRSAFE_KEYSTORE_PASSWORD and AIRSAFE_KEY_PASSWORD secrets are required for release builds in CI. Build failed closed."
+            exit 1
+          fi
+
+      - name: Assemble Release, Lint and Test
+        working-directory: android
+        env:
+          AIRSAFE_KEYSTORE_PASSWORD: ${{ secrets.AIRSAFE_KEYSTORE_PASSWORD }}
+          AIRSAFE_KEY_PASSWORD: ${{ secrets.AIRSAFE_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease lint test
+

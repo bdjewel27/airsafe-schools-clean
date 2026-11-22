@@ -1,0 +1,10 @@
+{
+  "name": "@airsafe/policy",
+  "version": "1.0.0",
+  "description": "Shared Model School Outdoor Activity Policy Module (Single Source of Truth)",
+  "main": "dist/policy.js",
+  "types": "dist/policy.d.ts",
+  "scripts": {
+    "build": "tsc"
+  }
+}

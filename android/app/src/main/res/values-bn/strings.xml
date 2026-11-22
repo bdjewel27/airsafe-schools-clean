@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Brand & Identity -->
+    <string name="app_name">এয়ারসেফ স্কুলস</string>
+    <string name="app_tagline">আউটডোর কার্যক্রম সুরক্ষা ও পরিবেশগত গোয়েন্দা ব্যবস্থা</string>
+    <string name="app_subtitle">বাস্তব সেন্সর ডেটা ও নিরাপত্তা নীতির ওপর ভিত্তি করে নির্ভরযোগ্য সিদ্ধান্ত</string>
+
+    <!-- Navigation Tabs -->
+    <string name="tab_home">হোম</string>
+    <string name="tab_trends">ট্রেন্ডস</string>
+    <string name="tab_assistant">সহকারী</string>
+    <string name="tab_analytics">পরিসংখ্যান</string>
+    <string name="tab_staff">কর্মী</string>
+
+    <!-- Policy Decision Outcomes (Hard Gate 4 / Policy v1.2) -->
+    <string name="decision_proceed_title">স্বাভাবিক কার্যক্রম চলবে</string>
+    <string name="decision_proceed_desc">স্বাভাবিক বহিরঙ্গন কার্যক্রম পরিচালনা করা যাবে</string>
+    <string name="decision_precautions_title">সতর্কতা সহ কার্যক্রম চলবে</string>
+    <string name="decision_precautions_desc">সতর্কতা মেনে ও পর্যাপ্ত পানির বিরতি দিয়ে বহিরঙ্গন ক্লাস চালু রাখুন</string>
+    <string name="decision_modify_title">কার্যক্রম পরিবর্তন করুন</string>
+    <string name="decision_modify_desc">শারীরিক পরিশ্রমের মাত্রা কমান অথবা খেলাধুলার সময়সীমা সংক্ষিপ্ত করুন</string>
+    <string name="decision_move_indoors_title">অবিলম্বে ভেতরে যান</string>
+    <string name="decision_move_indoors_desc">বহিরঙ্গন কার্যক্রম বাতিল করে সকল শিক্ষার্থীকে শ্রেণিকক্ষে রাখুন</string>
+    <string name="decision_unknown_title">তথ্য পাওয়া যায়নি</string>
+    <string name="decision_unknown_desc">নিরাপত্তা সতর্কতার খাতিরে শিক্ষার্থীদের ইনডোরে রাখুন</string>
+
+    <!-- Environmental Sensor Metrics -->
+    <string name="metric_heat_index">তাপ সূচক</string>
+    <string name="metric_aqi">বায়ু মান সূচক (AQI)</string>
+    <string name="metric_pm25">পিএম ২.৫ মাত্রা</string>
+    <string name="metric_temp">পরিবেশ তাপমাত্রা</string>
+    <string name="metric_wet_bulb">ওয়েট বাল্ব তাপমাত্রা</string>
+    <string name="metric_humidity">আপেক্ষিক আর্দ্রতা</string>
+
+    <!-- Durations & Precautions -->
+    <string name="max_outdoor_duration">সর্বোচ্চ বহিরঙ্গন সময়সীমা</string>
+    <string name="minutes_suffix">%1$d মিনিট</string>
+    <string name="requires_shade">ছায়াযুক্ত স্থান বাধ্যতামূলক</string>
+    <string name="requires_hydration">পানির বিরতি বাধ্যতামূলক</string>
+
+    <!-- Status Banners & Warnings -->
+    <string name="banner_stale_warning">সতর্কতা: সেন্সর ডেটা পুরনো (>৯০ মিনিট)। স্থানীয় নিরাপত্তা নীতি সক্রিয়।</string>
+    <string name="banner_offline">অফলাইন মোড: ক্যাশড নিরাপত্তা নীতি থেকে পরিচালিত হচ্ছে।</string>
+    <string name="banner_override_active">কোঅর্ডিনেটর ওভাররাইড সক্রিয়: %1$s</string>
+    <string name="banner_recalculating">ঝাঁকুনিহীন পুনঃগণনা চলছে...</string>
+
+    <!-- Coordinator Controls -->
+    <string name="btn_coordinator_override">কোঅর্ডিনেটর ওভাররাইড</string>
+    <string name="btn_override_apply">ওভাররাইড নিশ্চিত করুন</string>
+    <string name="btn_cancel">বাতিল</string>
+    <string name="dialog_override_title">জরুরি সিদ্ধান্ত ওভাররাইড</string>
+    <string name="dialog_override_desc">এই সিদ্ধান্তটি অপরিবর্তনীয় অডিট লগে সংরক্ষিত হবে এবং সব শিক্ষক দেখতে পাবেন।</string>
+    <string name="label_override_reason">ওভাররাইডের কারণ (কমপক্ষে ৫ অক্ষর)</string>
+    <string name="err_override_reason_short">কারণ কমপক্ষে ৫ অক্ষরের হতে হবে</string>
+
+    <!-- Routine & Activities -->
+    <string name="current_activity">বর্তমান কার্যক্রম</string>
+    <string name="next_activity">পরবর্তী কার্যক্রম</string>
+    <string name="btn_manage_routine">কার্যক্রম রুটিন</string>
+    <string name="btn_add_note">ক্লাস নোট যোগ করুন</string>
+    <string name="btn_refresh">এখনই রিফ্রেশ করুন</string>
+    <string name="btn_logout">লগআউট</string>
+
+    <!-- AI Assistant -->
+    <string name="assistant_title">এআই পরিবেশ সহকারী</string>
+    <string name="assistant_greeting">নমস্কার! আমি AirSafe AI সহকারী। আজকের সেন্সর ডেটা, হিট ইনডেক্স বা পলিসি v1.2 সংক্রান্ত যেকোনো প্রশ্ন করুন।</string>
+    <string name="assistant_placeholder">প্রশ্ন করুন (যেমন: আজ মাঠে ক্লাস নেওয়া যাবে?)</string>
+    <string name="assistant_mcp_tool_step">এমসিপি টুল কল হচ্ছে: %1$s...</string>
+    <string name="assistant_policy_check_step">পলিসি v1.2 যাচাই করা হচ্ছে...</string>
+    <string name="assistant_suggested_followups">প্রস্তাবিত পরবর্তী প্রশ্ন:</string>
+    <string name="chip_outdoor_pe">আজ কি মাঠে পিই ক্লাস হবে?</string>
+    <string name="chip_heat_rules">হিট ইনডেক্সের নিয়মাবলি</string>
+
+    <!-- Roles & Authentication -->
+    <string name="role_teacher">শিক্ষক</string>
+    <string name="role_coordinator">কোঅর্ডিনেটর</string>
+    <string name="school_label">বিদ্যালয়: %1$s</string>
+    <string name="auth_failed">প্রবেশ ব্যর্থ হয়েছে: তথ্য যাচাই করুন অথবা সার্ভার সংযোগ পরীক্ষা করুন।</string>
+
+    <!-- Extended Comprehensive UI Strings (U-7) -->
+    <string name="portal_title">এয়ারসেফ পোর্টাল</string>
+    <string name="login_subtitle">শুধু আমন্ত্রিত স্কুল স্টাফদের প্রবেশাধিকার</string>
+    <string name="login_email_label">স্কুল ইমেইল</string>
+    <string name="login_password_label">পাসওয়ার্ড</string>
+    <string name="login_button">স্কুল ড্যাশবোর্ডে প্রবেশ করুন</string>
+    <string name="login_demo_credentials">ডেমো লগইন তথ্য:</string>
+    <string name="login_as_teacher">শিক্ষক হিসেবে লগইন</string>
+    <string name="login_as_coordinator">কোঅর্ডিনেটর হিসেবে লগইন</string>
+    <string name="trends_title">তাপমাত্রা ও বায়ুমান ট্রেন্ড</string>
+    <string name="trends_subtitle">২৪ ঘণ্টার ধারাবাহিক পর্যবেক্ষণ ও ক্লাস সময়</string>
+    <string name="trends_offline_banner">অফলাইন মোড: ক্যাশড ঐতিহাসিক ট্রেন্ড প্রদর্শন করা হচ্ছে।</string>
+    <string name="trends_compare_label">সাইট তুলনা:</string>
+    <string name="trends_all_sites">ক্যাম্পাস গড়</string>
+    <string name="trends_chart_title">২৪ ঘণ্টার পরিবেশগত ট্রেন্ডলাইন</string>
+    <string name="trends_table_title">ঘণ্টাভিত্তিক পরিবেশগত লগ (অ্যাক্সেসিবল টেবিল)</string>
+    <string name="staff_title">স্টাফ ও শিক্ষক তালিকা</string>
+    <string name="staff_subtitle">শুধুমাত্র আপনার স্কুলের শিক্ষকদের তালিকা</string>
+    <string name="staff_invite_header">নতুন শিক্ষক যুক্ত করুন</string>
+    <string name="staff_invite_button">আমন্ত্রণ পাঠান</string>
+    <string name="sites_title">স্কুল সেন্সর সাইটসমূহ</string>
+    <string name="sites_subtitle">ক্যাম্পাসের বিভিন্ন পয়েন্টে পরিবেশগত সেন্সর</string>
+    <string name="sites_avg_heat_index">ক্যাম্পাস গড় হিট ইনডেক্স</string>
+    <string name="sites_avg_aqi">ক্যাম্পাস গড় বায়ুমান (AQI)</string>
+    <string name="sites_classroom_notice">ইনডোর ক্লাসরুম (সুরক্ষিত এলাকা)</string>
+    <string name="rule_viewer_title">কার্যকর নিরাপত্তা নীতি ও নিয়মাবলী (Policy v1.2)</string>
+    <string name="rule_viewer_subtitle">বহিরাঙ্গন ক্লাস, খেলাধুলা ও শারীরিক কসরতের নীতি</string>
+    <string name="decision_cloud_reset">লাইভ ক্লাউড ডেটায় ফিরুন</string>
+    <string name="view_policy_rules">নীতি দেখুন</string>
+    <string name="active_policy_tag">কার্যকর নীতি: Policy v1.2</string>
+    <string name="metric_dialog_title">সেন্সর পরিমাপ ও স্বাস্থ্য ঝুঁকির মানদণ্ড</string>
+    <string name="metric_clinical_guidance">স্বাস্থ্যগত নির্দেশনা ও পলিসি প্রভাব:</string>
+    <!-- Trigger Reasons & Decision Mapping -->
+    <string name="decision_reason_aqi_trigger">AQI %1$s: %2$s</string>
+    <string name="decision_reason_heat_index_trigger">হিট ইনডেক্স %1$s°C: %2$s</string>
+    <string name="decision_reason_respiratory_stepup">শ্বাসকষ্টের শিক্ষার্থী থাকায় এক ধাপ কঠোর</string>
+    <string name="decision_reason_modeled_capped">মডেল করা ডেটা: সতর্কতা প্রযোজ্য</string>
+    <string name="decision_reason_stale_capped">ডেটা ৯০ মিনিটের বেশি পুরোনো: সতর্কতা প্রযোজ্য</string>
+    <string name="decision_reason_normal_policy">পরিবেশ পরিস্থিতি নীতিমালার নিরাপদ সীমায় রয়েছে</string>
+
+    <string name="decision_action_proceed">স্বাভাবিক</string>
+    <string name="decision_action_precautions">সতর্কতা সহ</string>
+    <string name="decision_action_modify">পরিবর্তন</string>
+    <string name="decision_action_move_indoors">ভেতরে নিন</string>
+    <string name="decision_action_unknown">অজানা</string>
+
+    <string name="action_proceed">এগিয়ে যান</string>
+    <string name="action_modify">পরিবর্তন করুন</string>
+    <string name="action_precautions">সতর্কতা সহ চালান</string>
+    <string name="action_move_indoors">ভেতরে নিন</string>
+    <string name="action_unknown">অজানা</string>
+    <string name="audit_trail_title">অপরিবর্তনীয় ওভাররাইড অডিট ট্রেইল</string>
+    <string name="audit_export_pdf">PDF সাপ্তাহিক রিপোর্ট এক্সপোর্ট করুন</string>
+
+    <!-- UX & Accessibility Redesign (Step 4) -->
+    <string name="status_modeled">মডেল করা</string>
+    <string name="status_measured">মাপা ডেটা</string>
+    <string name="status_online">অনলাইন</string>
+    <string name="status_offline">অফলাইন</string>
+    <string name="status_unknown">অজানা</string>
+    <string name="btn_why_details">কেন? বিস্তারিত দেখুন</string>
+    <string name="link_override">ওভাররাইড</string>
+    <string name="header_upcoming_activities">পরের কার্যক্রম</string>
+    <string name="intensity_light">হালকা</string>
+    <string name="intensity_moderate">মাঝারি</string>
+    <string name="intensity_vigorous">ভারী</string>
+    <string name="tier_safe">স্বাভাবিক</string>
+    <string name="tier_moderate">মাঝারি</string>
+    <string name="tier_sensitive">সংবেদনশীলদের জন্য অস্বাস্থ্যকর</string>
+    <string name="tier_unhealthy">অস্বাস্থ্যকর</string>
+    <string name="tab_chart">চার্ট</string>
+    <string name="tab_table">টেবিল</string>
+    <string name="dialog_explanation_title">পরিবেশগত নির্দেশিকা ও কারণ</string>
+    <string name="detail_field_label">খেলার মাঠ</string>
+    <string name="detail_courtyard_label">উঠান</string>
+
+    <!-- Step 7.4 Resource Extractions -->
+    <string name="default_school_name">ঢাকা মডেল স্কুল</string>
+    <string name="default_staff_name">স্কুল স্টাফ</string>
+    <string name="role_admin">প্ল্যাটফর্ম অ্যাডমিন</string>
+    <string name="loading_verified_telemetry">যাচাইকৃত লাইভ ডেটা লোড হচ্ছে...</string>
+
+    <string name="header_active_health_notes">সক্রিয় স্বাস্থ্য নোট:</string>
+    <string name="btn_add_health_note">+ স্বাস্থ্য নোট যুক্ত করুন</string>
+    <string name="btn_retry">পুনরায় চেষ্টা করুন</string>
+    <string name="label_now_prefix">এখন • %1$s</string>
+    <string name="label_now_outdoor_default">এখন • বহিরঙ্গন কার্যক্রম</string>
+    <string name="banner_override_active_format">কোঅর্ডিনেটর ওভাররাইড কার্যকর: %1$s</string>
+    <string name="label_data_freshness_format">ডেটা %1$s • %2$s</string>
+
+    <string name="dialog_explanation_alert_title">জরুরি এয়ারসেফ সতর্কতা ব্যাখ্যা</string>
+    <string name="dialog_current_status_decision">বর্তমান অবস্থা ও সিদ্ধান্ত:</string>
+    <string name="dialog_primary_reason">প্রধান কারণ:</string>
+    <string name="dialog_primary_reason_default">তাপ সূচক বা একিউআই সীমা অতিক্রম করায় জরুরি সতর্কতা জারি করা হয়েছে।</string>
+    <string name="dialog_policy_rules_reasons">নীতিমালার নিয়ম ও কারণসমূহ:</string>
+    <string name="dialog_heat_index_format">তাপ সূচক: %1$s°C</string>
+    <string name="dialog_aqi_format">ইউএস একিউআই: %1$s</string>
+    <string name="dialog_dismiss">বুঝেছি</string>
+    <string name="dialog_close">বন্ধ করুন</string>
+
+    <string name="dialog_policy_rules_title">মডেল স্কুল আউটডোর পলিসি v1.2</string>
+    <string name="dialog_policy_effective_date">কার্যকর তারিখ: ১ অক্টোবর ২০২৬ • কর্তৃপক্ষ: AirSafe Protocol</string>
+    <string name="dialog_policy_active_decision">বর্তমান সক্রিয় সিদ্ধান্ত:</string>
+    <string name="dialog_policy_governed_tag">এই নীতি দ্বারা মূল্যায়িত</string>
+    <string name="dialog_governing_safety_rules">মূল নিরাপত্তা বিধি ও নিয়মাবলী:</string>
+
+    <string name="dialog_add_note_title">অ্যাক্টিভিটি প্রেক্ষাপট নোট</string>
+    <string name="dialog_target_activity">নির্দিষ্ট অ্যাক্টিভিটি: %1$s</string>
+    <string name="dialog_note_description">নোটের বিবরণ</string>
+    <string name="dialog_note_placeholder">যেমন: দুজন শিক্ষার্থীর আজমা/শ্বাসকষ্ট সমস্যা দেখা দিয়েছে</string>
+    <string name="dialog_note_respiratory_warning">⚠️ নোটে আজমা/শ্বাসকষ্ট উল্লেখ থাকায় পলিসি v1.2 (রুল ৫) অনুযায়ী তাৎক্ষণিকভাবে ১ ধাপ বেশি সতর্কতা প্রযোজ্য হবে।</string>
+    <string name="dialog_note_cancel">বাতিল</string>
+    <string name="dialog_note_submit">নোট জমা দিন</string>
+
+    <string name="dialog_override_confirm_title">কোঅর্ডিনেটর জরুরি ওভাররাইড</string>
+    <string name="dialog_override_select_decision">কাঙ্ক্ষিত সিদ্ধান্ত:</string>
+    <string name="dialog_override_reason_label">লিখিত যৌক্তিক কারণ (বাধ্যতামূলক):</string>
+    <string name="dialog_override_reason_placeholder">কমপক্ষে ৫ অক্ষরের লিখিত কারণ...</string>
+    <string name="dialog_override_reason_error">কারণ কমপক্ষে ৫ অক্ষরের হতে হবে</string>
+    <string name="dialog_override_cancel">বাতিল</string>
+    <string name="dialog_override_confirm">ওভাররাইড কার্যকর করুন</string>
+
+    <string name="dialog_routine_title">রুটিন ও অ্যাক্টিভিটি কনফিগারেশন</string>
+    <string name="dialog_routine_current_label">বর্তমান অ্যাক্টিভিটি:</string>
+    <string name="dialog_routine_next_label">পরবর্তী অ্যাক্টিভিটি:</string>
+    <string name="dialog_routine_intensity_label">শারীরিক তীব্রতা:</string>
+    <string name="dialog_routine_intensity_hint">শারীরিক পরিশ্রমের মাত্রা সরাসরি পলিসি v1.2 তাপদাহ সীমাকে প্রভাবিত করে।</string>
+    <string name="dialog_routine_light_reason_label">হালকা করার কারণ (বাধ্যতামূলক)</string>
+    <string name="dialog_routine_light_reason_placeholder">কমপক্ষে ৫ অক্ষরের লিখিত কারণ...</string>
+    <string name="dialog_routine_target_class_duration">শ্রেণি ও সময়কাল:</string>
+    <string name="dialog_routine_class_label">শ্রেণি</string>
+    <string name="dialog_routine_duration_label">সময়কাল (মিনিট)</string>
+    <string name="dialog_routine_duration_error">অনুগ্রহ করে সঠিক সময়কাল (মিনিট) লিখুন</string>
+    <string name="dialog_routine_save">সংরক্ষণ করুন</string>
+
+    <string name="dialog_metric_heat_index_rules">হিট ইনডেক্স ও পরিবেশগত তাপমাত্রা</string>
+    <string name="dialog_metric_aqi_rules">বায়ুমান সূচক (US AQI ও PM2.5)</string>
+    <string name="dialog_metric_source_reliability">ডেটার উৎস ও নির্ভরযোগ্যতা</string>
+    <string name="dialog_metric_current_hi_format">বর্তমান অনুভূত তাপমাত্রা: %1$s°C</string>
+    <string name="dialog_metric_hi_guidance">• &lt;৩২°C: স্বাভাবিক বহিরঙ্গন কার্যক্রম (সবুজ)\n• ৩২-৩৭.৯°C: ছায়া ও পানির বিরতি বাধ্যতামূলক (হলুদ)\n• ৩৮-৩৯.৯°C: কার্যক্রম সীমিত/পরিবর্তন, সর্বোচ্চ ৩০ মিনিট (কমলা)\n• ≥৪০°C: অবিলম্বে ভেতরে নেওয়া বাধ্যতামূলক (লাল)</string>
+    <string name="dialog_metric_current_aqi_format">বর্তমান US AQI: %1$s (PM2.5: %2$s µg/m³)</string>
+    <string name="dialog_metric_aqi_guidance">• ০-৫০: ভালো (সবুজ)\n• ৫১-১০০: সহনশীল (হলুদ)\n• ১০১-১৫০: সংবেদনশীলদের জন্য অস্বাস্থ্যকর (পরিবর্তন - কমলা)\n• ১৫১-২০০: অস্বাস্থ্যকর (ভেতরে নিন - লাল)\n• ≥২০১: বিপজ্জনক (ভেতরে নিন - লাল)</string>
+    <string name="dialog_metric_source_confidence">টেলিমেট্রি নির্ভরযোগ্যতার মাত্রা: %1$s%%</string>
+    <string name="dialog_metric_source_details">• প্রাথমিক উৎস: ক্যাম্পাস আইওটি সেন্সর\n• ব্যাকআপ: ওপেন-মেটিও উচ্চ-রেজোলিউশন মডেল (ক্যাপড)\n• রিফ্রেশ: প্রতি ৪৫ সেকেন্ডে ফোরগ্রাউন্ড পোলিং</string>
+
+    <string name="dialog_override_title_justification">বাধ্যতামূলক কারণসহ ওভাররাইড</string>
+    <string name="dialog_override_description">নীতি অপরিবর্তিত থাকবে, শুধুমাত্র এই সেশনের সিদ্ধান্ত পরিবর্তিত হবে এবং অডিট লগে সংরক্ষিত হবে।</string>
+    <string name="dialog_override_target_decision">টার্গেট সিদ্ধান্ত:</string>
+    <string name="dialog_override_reason">ওভাররাইডের কারণ</string>
+    <string name="dialog_routine_desc_config">বর্তমান সেশনের জন্য অ্যাক্টিভিটি, শারীরিক তীব্রতা এবং শ্রেণি নির্ধারণ করুন:</string>
+    <string name="dialog_routine_pe_warning">⚠️ নীতিমালা সতর্কতা: নীতি (Policy v1.2) অনুযায়ী শারীরিক শিক্ষা (PE) বা ফুটবল একটি ভারী (ভারী) কার্যক্রম। এটিকে \'হালকা\' (হালকা) নির্ধারণ করলে শিক্ষার্থীদের সুরক্ষা ঝুঁকি তৈরি হতে পারে। হালকা করতে হলে স্পষ্ট কারণ উল্লেখ করুন:</string>
+    <string name="dialog_routine_pe_error">পিই (PE) হালকা করার স্পষ্ট কারণ লিখুন (কমপক্ষে ৫ অক্ষর)</string>
+    <string name="source_modeled_satellite">মডেল করা (Open-Meteo স্যাটেলাইট)</string>
+    <string name="source_measured_iot">মাপা (ক্যাম্পাস IoT সেন্সর)</string>
+    <string name="dialog_metric_source_format">উৎস: %1$s (কনফিডেন্স: %2$s%%)</string>
+    <string name="dialog_metric_source_policy_desc">Policy v1.2 ধারা ৪ (ডেটা ফলব্যাক ও ক্যাপ):\nক্যাম্পাসে প্রত্যক্ষ IoT সেন্সর সচল থাকলে প্রত্যক্ষ মাপা ডেটা অগ্রাধিকার পায়। সেন্সর অফলাইন বা ৯০ মিনিটের পুরোনো হলে ওপেন-মেটিও মডেলড ডেটায় অটো-ফলব্যাক হয় এবং সুরক্ষার জন্য কঠোরতম ক্যাপ প্রযোজ্য হয়।</string>
+    <string name="dialog_metric_hi_full_guidance">গণনা পদ্ধতি: শুষ্ক তাপমাত্রা ও আপেক্ষিক আর্দ্রতার সমন্বয়ে রথফুস (Rothfusz) সমীকরণ।\n\nপলিসি ১.৩ সারণী ২-এর সীমা:\n• &lt; ২৭°C: নিরাপদ\n• ২৭°C–৩১°C: সতর্কতা ও প্রতি ২০ মিনিটে পানির বিরতি\n• ৩২°C–৩৮°C: কার্যক্রম সীমিত (ছায়া বাধ্যতামূলক, সর্বোচ্চ ৩০ মিনিট)\n• ≥ ৩৯°C: অবিলম্বে ভেতরে স্থানান্তর বাধ্যতামূলক</string>
+    <string name="dialog_metric_aqi_full_guidance">গণনা পদ্ধতি: EPA US AQI স্ট্যান্ডার্ড অনুযায়ী PM2.5 কণার ঘনত্বের ভিত্তিতে পরিমাপিত।\n\nপলিসি ১.৩ সারণী ১-এর সীমা:\n• ০–৫০: ভালো ও নিরাপদ\n• ৫১–১০০: মাঝারি (তীব্র খেলায় বিশেষ সতর্কতা)\n• ১০১–১৫০: সংবেদনশীলদের জন্য ঝুঁকিপূর্ণ (কার্যক্রম সীমিত ও ছায়া)\n• ≥ ১৫১: বিপজ্জনক/খারাপ (অবিলম্বে ভেতরে নেওয়া বাধ্যতামূলক)</string>
+
+    <string name="policy_rule_1">নিয়ম-১: তাপ ও বায়ু থ্রেশহোল্ড</string>
+    <string name="policy_rule_2">নিয়ম-২: কার্যক্রমের তীব্রতা মডিফায়ার</string>
+    <string name="policy_rule_3">নিয়ম-৩: শ্বাসকষ্ট ও সংবেদনশীল শিক্ষার্থীর সতর্কতা</string>
+    <string name="policy_rule_4">নিয়ম-৪: ডেটা ফ্রেশনেস ও পুরোনো ডেটা ফ্লোর (৯০ মি.)</string>
+    <string name="policy_rule_5">নিয়ম-৫: সতর্কবার্তা ট্রিগার ও নীরব সময়</string>
+    <string name="policy_rule_6">নিয়ম-৬: কোঅর্ডিনেটর ওভাররাইড ও অডিট ট্রেইল</string>
+
+    <!-- Step 5.1 PE Downgrade Warning Dialog -->
+    <string name="pe_downgrade_dialog_title">শারীরিক শিক্ষা (PE) ডাউনগ্রেড সতর্কতা</string>
+    <string name="pe_downgrade_dialog_warning">মডেল স্কুল পলিসি v1.2 অনুযায়ী শারীরিক শিক্ষা (PE) বা খেলাধুলা সাধারণত ভারী কার্যক্রম। এটিকে \'হালকা\' নির্ধারণ করলে শিক্ষার্থীদের সুরক্ষা ঝুঁকি তৈরি হতে পারে। এই ডাউনগ্রেডের জন্য একটি বাধ্যতামূলক কারণ উল্লেখ করুন:</string>
+    <string name="pe_downgrade_dialog_confirm">ডাউনগ্রেড নিশ্চিত করুন</string>
+
+    <!-- Steps 5.2 - 5.4, 7.4 School Analytics & Reports -->
+    <string name="analytics_title">স্কুল অ্যানালিটিক্স ও রিপোর্ট</string>
+    <string name="analytics_subtitle">সাপ্তাহিক নিরাপত্তা মূল্যায়ন ও সিদ্ধান্তের প্রভাব</string>
+    <string name="analytics_lost_time_title">বাতিল হওয়া আউটডোর সময়</string>
+    <string name="analytics_unit_minutes">মিনিট</string>
+    <string name="analytics_unit_hours">ঘণ্টা</string>
+    <string name="analytics_comparison_less">পূর্ববর্তী সপ্তাহের তুলনায় %1$s মিনিট কম ক্ষতি হয়েছে।</string>
+    <string name="analytics_comparison_more">পূর্ববর্তী সপ্তাহের তুলনায় %1$s মিনিট বেশি ক্ষতি হয়েছে।</string>
+    <string name="analytics_above_threshold">বিপদসীমার ওপরে</string>
+    <string name="analytics_measured_ratio">মাপা বনাম মডেল</string>
+    <string name="analytics_decision_breakdown">সিদ্ধান্তের বিভাজন ও ওভাররাইড</string>
+    <string name="analytics_row_safe">নিরাপদ</string>
+    <string name="analytics_row_caution">সতর্কতা সহ কার্যক্রম</string>
+    <string name="analytics_row_move_indoors">ভেতরে নেওয়া (জরুরি)</string>
+    <string name="analytics_row_overrides">কোঅর্ডিনেটর ওভাররাইড</string>
+    <string name="analytics_no_audit_records">কোনো কোঅর্ডিনেটর ওভাররাইড অডিট রেকর্ড নেই।</string>
+    <string name="analytics_reason_prefix">কারণ: %1$s</string>
+    <string name="analytics_by_coordinator_prefix">কোঅর্ডিনেটর: %1$s</string>
+    <string name="analytics_relaxes_floor_warning">⚠️ নীতি শিথিলকরণ</string>
+    <string name="analytics_expires_prefix">মেয়াদ শেষ: %1$s</string>
+    <string name="analytics_share_report">সাপ্তাহিক রিপোর্ট শেয়ার করুন</string>
+    <string name="analytics_export_csv">রো-লেভেল CSV এক্সপোর্ট করুন</string>
+
+    <!-- Step 5.5 & 6.2 Telemetry Header and Weather Fallback -->
+    <string name="data_not_found">ডেটা পাওয়া যায়নি</string>
+    <string name="status_modeled_data">মডেল করা ডেটা</string>
+    <string name="telemetry_modeled_header">মডেল করা ডেটা (ওপেন-মেটিও)</string>
+    <string name="telemetry_verified_header">যাচাইকৃত গ্রাউন্ড ডেটা</string>
+    <string name="grounding_modeled_hi_format">মডেল করা হিট ইনডেক্স: %1$s°C</string>
+    <string name="grounding_verified_hi_format">যাচাইকৃত হিট ইনডেক্স: %1$s°C</string>
+    <string name="status_live_format">অনলাইন • %1$s</string>
+    <string name="status_offline_format">অফলাইন • %1$s</string>
+    <string name="trends_school_hours_shading">স্কুল সময় শেডিং: সকাল ৮:০০ – বিকাল ৪:০০ (Asia/Dhaka)</string>
+    <string name="trends_telemetry_title_format">ট্রেন্ড মেট্রিক বিবরণ (%1$s)</string>
+    <string name="trends_field_vs_courtyard">মাঠ বনাম উঠান তুলনা:</string>
+
+    <!-- Step 5.6 Push Notification (FCM) & Local Notification Notice -->
+    <string name="banner_fcm_fallback_warning">পুশ নোটিফিকেশন (FCM) অনুপলব্ধ (google-services.json অনুপস্থিত)। সতর্কবার্তা কেবল ইন-অ্যাপ লোকাল নোটিফিকেশনে সীমাবদ্ধ।</string>
+
+    <!-- Step 7.4 Additional Localized UI & ViewModel Strings -->
+    <string name="lang_toggle_label">English</string>
+    <string name="login_btn_signin">লগইন করুন</string>
+    <string name="login_footer_notice">⚠️ শুধু আমন্ত্রিত স্টাফদের জন্য উন্মুক্ত। আপনার পদবী ও স্কুল কর্তৃপক্ষ কর্তৃক নির্ধারিত।</string>
+    <string name="staff_subtitle_scoped">শুধুমাত্র আপনার স্কুলের শিক্ষকদের ইনভাইট পাঠান। অন্য স্কুলে অ্যাক্সেস সীমিত।</string>
+    <string name="staff_btn_send_invite">আমন্ত্রণ পাঠান</string>
+    <string name="staff_email_placeholder">teacher.email@dms.edu.bd</string>
+    <string name="staff_active_members_title">আমন্ত্রিত শিক্ষকবৃন্দ (%1$d):</string>
+    <string name="err_coordinator_auth_required">সংরক্ষণ হয়নি: শুধুমাত্র কোঅর্ডিনেটর ওভাররাইড করতে পারেন</string>
+    <string name="err_override_reason_min_length">সংরক্ষণ হয়নি: ওভাররাইডের কারণ অন্তত ৫ অক্ষরের হতে হবে</string>
+    <string name="err_override_sync_warning">ওভাররাইড সিঙ্ক সতর্কতা (%1$s): সিদ্ধান্তটি লোকাল নীতি অনুযায়ী স্ক্রিনে প্রয়োগ করা হয়েছে। (%2$s)</string>
+    <string name="err_trends_empty">নির্বাচিত সময়ের জন্য কোনো যাচাইকৃত ট্রেন্ড ডেটা পাওয়া যায়নি।</string>
+    <string name="err_trends_load_failed">ট্রেন্ড ডেটা লোড করা যায়নি (%1$s): অনুগ্রহ করে পুনরায় চেষ্টা করুন।</string>
+    <string name="note_respiratory_caution">কয়েকজন শিক্ষার্থীর শ্বাসকষ্ট সমস্যা রয়েছে</string>
+    <string name="err_note_sync_warning">অনলাইন সিঙ্ক সতর্কতা (%1$s): নোটটি লোকাল মেমোরি ও স্ক্রিনে সফলভাবে সংরক্ষিত হয়েছে। (%2$s)</string>
+    <string name="err_routine_sync_warning">রুটিন সিঙ্ক সতর্কতা (%1$s): রুটিন লোকাল নীতি অনুযায়ী স্ক্রিনে সংরক্ষিত হয়েছে। (%2$s)</string>
+    <string name="err_invite_coordinator_only">সংরক্ষণ হয়নি: শুধুমাত্র কোঅর্ডিনেটর শিক্ষক আমন্ত্রণ জানাতে পারেন</string>
+    <string name="err_invite_valid_email">সংরক্ষণ হয়নি: সঠিক ইমেইল প্রদান করুন</string>
+    <string name="err_invite_send_failed">সংরক্ষণ হয়নি: শিক্ষক আমন্ত্রণ পাঠানো যায়নি (%1$s: %2$s)</string>
+    <string name="err_server_generic">সার্ভার সমস্যা</string>
+    <string name="analytics_share_header">📊 এয়ারসেফ স্কুল সাপ্তাহিক রিপোর্ট</string>
+    <string name="analytics_share_week">সপ্তাহ: %1$s</string>
+    <string name="analytics_share_lost_mins">বাতিল হওয়া আউটডোর মিনিট: %1$s মিনিট</string>
+    <string name="analytics_share_hours_above">বিপদসীমার ওপরে সময়: %1$s ঘণ্টা</string>
+    <string name="analytics_share_safe_sessions">নিরাপদ সেশন: %1$s</string>
+    <string name="analytics_share_move_indoors">ভেতরে নেওয়া সেশন: %1$s</string>
+    <string name="analytics_share_overrides">রেকর্ড করা ওভাররাইড: %1$s</string>
+    <string name="analytics_share_measured_ratio">মাপা ডেটার অনুপাত: %1$s%%</string>
+    <string name="analytics_share_chooser">সাপ্তাহিক রিপোর্ট শেয়ার করুন</string>
+    <string name="analytics_export_csv_chooser">রো-লেভেল CSV এক্সপোর্ট করুন</string>
+    <string name="export_no_app_found">এই রিপোর্ট শেয়ার বা খোলার জন্য কোনো অ্যাপ পাওয়া যায়নি।</string>
+    <string name="export_failed">রিপোর্ট এক্সপোর্ট করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।</string>
+    <string name="export_empty_data">এক্সপোর্ট করার জন্য কোনো অ্যানালিটিক্স ডেটা পাওয়া যায়নি।</string>
+    <string name="assistant_offline_banner">সতর্কতা: অফলাইন/স্টেল মোড—সহকারী স্থানীয় ক্যাশড পলিসি নির্দেশিকা প্রদান করছে।</string>
+    <string name="assistant_reasoning_steps">যুক্তি ও যাচাইকরণের ধাপসমূহ:</string>
+    <string name="assistant_citation_prefix">উদ্ধৃতি: %1$s</string>
+    <string name="assistant_quick_pe_question">আজ কি পিই ক্লাস বাইরে নেওয়া যাবে?</string>
+    <string name="assistant_quick_heat_question">হিট ইনডেক্স কত হলে বাইরে যাওয়া নিষেধ?</string>
+    <string name="assistant_step_prompt_ok">প্রম্পট ও সুরক্ষা যাচাই সম্পন্ন...</string>
+    <string name="assistant_step_tool_call">টুল কল: %1$s</string>
+    <string name="assistant_step_policy_verified">পলিসি v1.2 গ্রাউন্ডিং যাচাই...</string>
+    <string name="assistant_server_unavailable">সহকারী সার্ভার সংযোগ ব্যর্থ (%1$s): অফলাইন নিরাপত্তা নীতি প্রয়োগ করা হচ্ছে।</string>
+    <string name="assistant_fallback_no_data">বর্তমানে আপনার স্কুলের যাচাইকৃত সেন্সর ডেটা পাওয়া যায়নি। Policy v1.2 ধারা ৪ অনুযায়ী ডেটা ছাড়া কোনো আউটডোর কার্যক্রমকে নিরাপদ ঘোষণা করা যাবে না।</string>
+    <string name="assistant_fallback_verified">বর্তমান যাচাইকৃত হিট ইনডেক্স %1$s°C এবং AQI %2$s। Policy v1.2 অনুযায়ী বর্তমান বাধ্যতামূলক আউটডোর সিদ্ধান্ত হলো: %3$s।</string>
+    <string name="assistant_citation_excerpt_label">মূল অনুচ্ছেদ (Policy v1.2):</string>
+    <string name="btn_close_ok">ঠিক আছে</string>
+    <string name="pdf_report_title">এয়ারসেফ স্কুল • সাপ্তাহিক নিরাপত্তা মূল্যায়ন রিপোর্ট</string>
+    <string name="pdf_eval_week">মূল্যায়ন সপ্তাহ: %1$s</string>
+    <string name="pdf_generated_at">রিপোর্ট তৈরির সময়: %1$s</string>
+    <string name="pdf_sec1_title">১. কার্যনির্বাহী সারসংক্ষেপ ও নিরাপত্তা পরিমাপক (KPI)</string>
+    <string name="pdf_kpi_lost_mins">বাতিল হওয়া আউটডোর মিনিট</string>
+    <string name="pdf_kpi_hours_above">বিপদসীমার ওপরে সময়</string>
+    <string name="pdf_kpi_total_sessions">মোট বিশ্লেষণকৃত সেশন</string>
+    <string name="pdf_kpi_measured_ratio">অন-সাইট সেন্সর পরিমাপ অনুপাত</string>
+    <string name="pdf_sec2_title">২. পলিসি সিদ্ধান্ত ও অপারেশনাল বিভাজন</string>
+    <string name="pdf_row_safe">নিরাপদ সেশন (সবুজ)</string>
+    <string name="pdf_row_caution">সতর্কতা ও পরিবর্তন (হলুদ/কমলা)</string>
+    <string name="pdf_row_move_indoors">ভেতরে নেওয়া / বাতিল (জরুরি - লাল)</string>
+    <string name="pdf_row_overrides">রেকর্ডকৃত কোঅর্ডিনেটর ওভাররাইড</string>
+    <string name="pdf_sec3_title">৩. কমপ্লায়েন্স ও আইনি নিশ্চয়তা</string>
+    <string name="pdf_note_1">• এই রিপোর্টটি Model School Outdoor Activity Policy v1.2 এর অধীনে রিয়েল-টাইম সেন্সর ও পূর্বাভাসের ওপর ভিত্তি করে প্রণীত।</string>
+    <string name="pdf_note_2">• কোঅর্ডিনেটরের যেকোনো নীতি পরিবর্তনের ঘটনা অপরিবর্তনীয় অডিট লগে সংরক্ষিত এবং স্কুল গভর্নিং বডির কাছে দায়বদ্ধ।</string>
+    <string name="pdf_note_3">• এয়ারসেফ প্ল্যাটফর্ম শিশুদের শ্বাসযন্ত্র সুরক্ষা ও চরম তাপমাত্রা নিরাপত্তা নিশ্চিতে স্বয়ংক্রিয় অডিট ট্রেইল বজায় রাখে।</string>
+    <string name="pdf_share_subject">এয়ারসেফ স্কুল সাপ্তাহিক নিরাপত্তা রিপোর্ট (%1$s)</string>
+    <string name="pdf_share_chooser">সাপ্তাহিক নিরাপত্তা রিপোর্ট (PDF) শেয়ার করুন</string>
+    <string name="trends_range_24h">২৪ ঘণ্টা</string>
+    <string name="trends_range_7d">৭ দিন</string>
+    <string name="trends_range_30d">৩০ দিন</string>
+    <string name="trends_site_field">মাঠ</string>
+    <string name="trends_site_field_vs_courtyard">মাঠ বনাম উঠান</string>
+    <string name="trends_view_chart">চার্ট</string>
+    <string name="trends_view_table">টেবিল</string>
+    <string name="trends_col_time">সময়</string>
+    <string name="trends_col_heat_index">হিট ইনডেক্স</string>
+    <string name="trends_col_status">অবস্থা</string>
+    <string name="trends_detail_aqi">বায়ুমান সূচক (AQI):</string>
+    <string name="trends_detail_pm25">পিএম ২.৫ মাত্রা:</string>
+    <string name="trends_detail_heat_index">হিট ইনডেক্স:</string>
+    <string name="trends_detail_ambient_temp">পরিবেশ তাপমাত্রা:</string>
+    <string name="trends_detail_courtyard_aqi">উঠান AQI:</string>
+    <string name="trends_detail_courtyard_hi">উঠান হিট ইনডেক্স:</string>
+    <string name="trends_detail_policy_tier">পলিসি স্তর:</string>
+    <string name="trends_detail_policy_note">নীতিমালা v1.2: পরিবেশ পরিস্থিতি নিয়মিত পর্যবেক্ষণ করুন এবং শিক্ষার্থীদের পর্যাপ্ত পানি বিরতি নিশ্চিত করুন।</string>
+    <string name="trends_tier_unhealthy">অস্বাস্থ্যকর</string>
+    <string name="trends_tier_sensitive">সংবেদনশীল</string>
+    <string name="trends_tier_moderate">মাঝারি</string>
+    <string name="trends_tier_safe">স্বাভাবিক</string>
+    <string name="trends_empty_data">কোনো ট্রেন্ড ডেটা নেই</string>
+    <string name="trends_legend_field_aqi">মাঠ AQI</string>
+    <string name="trends_legend_courtyard_aqi">উঠান AQI</string>
+    <string name="trends_legend_heat_index">হিট ইনডেক্স (°C)</string>
+    <string name="notif_urgent_move_indoors_title">🚨 জরুরি এয়ারসেফ সতর্কতা: ভেতরে যান</string>
+
+    <!-- Section 7.5 Resource Extractions (No Inline Language Ternary) -->
+    <string name="trends_default_period">২৪ ঘণ্টার ট্রেন্ড</string>
+    <string name="data_freshness_just_now">এইমাত্র</string>
+    <string name="data_freshness_mins_ago">%1$s মিনিট আগে</string>
+    <string name="data_freshness_hrs_ago">%1$s ঘণ্টা আগে</string>
+    <string name="data_freshness_hrs_mins_ago">%1$s ঘণ্টা %2$s মিনিট আগে</string>
+    <string name="guidance_modify_format">সর্বোচ্চ %1$s মিনিট, ছায়ায়। প্রতি ২০ মিনিটে পানি বিরতি।</string>
+    <string name="reason_with_metrics_format">কারণ: %1$s • নীতি অনুযায়ী %2$s</string>
+    <string name="reason_policy_only_format">কারণ: নীতি অনুযায়ী %1$s প্রযোজ্য</string>
+    <string name="reason_heat_index_part">হিট ইনডেক্স %1$s°C</string>
+    <string name="reason_aqi_part">AQI %1$s</string>
+    <string name="local_fail_closed_reason">সেন্সর বা আবহাওয়া ডেটা পাওয়া যায়নি — অনুগ্রহ করে কোঅর্ডিনেটরের সাথে যোগাযোগ করুন।</string>
+    <string name="local_override_emergency_default">কোঅর্ডিনেটরের জরুরি নির্দেশ</string>
+    <string name="local_heat_extreme_format">চরম তাপদাহ (হিট ইনডেক্স %1$s°C &gt;= ৪০°C)</string>
+    <string name="local_aqi_hazardous_format">বিপজ্জনক বায়ুদূষণ (AQI %1$s &gt;= ২০১)</string>
+    <string name="local_mandatory_move_indoors_format">🚨 জরুরি স্বাস্থ্য সতর্কতা (ভেতরে নেওয়া আবশ্যক): %1$s</string>
+    <string name="local_override_modify_default">কোঅর্ডিনেটর নির্দেশিত পরিবর্তন</string>
+    <string name="local_override_modify_format">কোঅর্ডিনেটর ওভাররাইড (কার্যক্রম পরিবর্তন): %1$s</string>
+    <string name="local_high_heat_modify_format">উচ্চ তাপপ্রবাহ (হিট ইনডেক্স %1$s°C): Policy v1.2 অনুযায়ী কার্যক্রম পরিবর্তন প্রযোজ্য</string>
+    <string name="local_unhealthy_aqi_modify_format">অস্বাস্থ্যকর বায়ুমান (AQI %1$s): Policy v1.2 অনুযায়ী কার্যক্রম পরিবর্তন প্রযোজ্য</string>
+    <string name="local_respiratory_modify">সংবেদনশীল শিক্ষার্থী (আজমা/হাঁপানি): Policy v1.2 (রুল ৫) অনুযায়ী ১ ধাপ সতর্কতায় কার্যক্রম পরিবর্তন আবশ্যক — সর্বোচ্চ ৩০ মিনিট ও ছায়া বাধ্যতামূলক</string>
+    <string name="local_vigorous_modify">তীব্র শারীরিক কসরত (Vigorous Activity): Policy v1.2 অনুযায়ী সতর্কতা বৃদ্ধি — সর্বোচ্চ ৩০ মিনিট ও ছায়া বাধ্যতামূলক</string>
+    <string name="local_proceed_safe">আবহাওয়া ও বায়ুমান সম্পূর্ণ অনুকূল — স্বাভাবিক বহিরঙ্গন কার্যক্রম অব্যাহত রাখুন</string>
+    <string name="local_precautions_tolerable">হিট ইনডেক্স ও বায়ুমান সহনশীল সীমার মধ্যে — হাইড্রেটেড থাকুন ও ছায়াযুক্ত স্থানে পিই ক্লাস পরিচালনা করুন</string>
+    <string name="local_mandatory_shade_break">ছায়ায় পর্যাপ্ত বিরতি বাধ্যতামূলক</string>
+    <string name="local_just_now_updated">এইমাত্র হালনাগাদকৃত</string>
+    <string name="local_no_activity_data">তথ্য নেই</string>
+    <string name="local_measured_iot_label">পরিমাপিত ক্যাম্পাস IoT সেন্সর</string>
+    <string name="local_forecast_stable_4h">পরবর্তী ৪ ঘণ্টায় পরিবর্তনের সম্ভাবনা নেই (স্থিতিশীল)</string>
+    <string name="target_class_all">সকল শ্রেণি</string>
+    <string name="class_grade_5">৫ম শ্রেণি</string>
+    <string name="class_grade_6">৬ষ্ঠ শ্রেণি</string>
+    <string name="class_grade_7">৭ম শ্রেণি</string>
+    <string name="class_grade_8">৮ম শ্রেণি</string>
+    <string name="class_grade_9">৯ম শ্রেণি</string>
+    <string name="class_grade_10">১০ম শ্রেণি</string>
+    <string name="err_auth_invalid_credentials_format">লগইন ব্যর্থ হয়েছে (HTTP %1$d): ভুল ইমেইল বা পাসওয়ার্ড।</string>
+    <string name="err_auth_rate_limited">অতিরিক্ত লগইন প্রচেষ্টার কারণে সাময়িকভাবে বন্ধ আছে (HTTP 429)। কিছুক্ষণ পর চেষ্টা করুন।</string>
+    <string name="err_auth_network_failed_format">লগইন ব্যর্থ হয়েছে (%1$s): সঠিক ইমেইল ও পাসওয়ার্ড দিন বা সার্ভার সংযোগ (%2$s) পরীক্ষা করুন।</string>
+    <string name="err_connect_exception_format">কানেকশন ব্যর্থ (ConnectException): সার্ভার চালু ও আইপি সঠিক কিনা নিশ্চিত করুন। (%1$s)</string>
+    <string name="err_unknown_host_format">হোস্ট পাওয়া যায়নি (UnknownHostException): আইপি বা ডোমেইন অ্যাড্রেস যাচাই করুন। (%1$s)</string>
+    <string name="err_socket_timeout">টাইমআউট (SocketTimeoutException): সার্ভার নির্দিষ্ট সময়ে সাড়া দেয়নি।</string>
+    <string name="err_http_code_format">HTTP ত্রুটি [%1$d]: %2$s</string>
+    <string name="local_severe_hazard_sim">🚨 চরম ঝুঁকি: US AQI ১৮৫ ও হিট ইনডেক্স ৪৪.৫°C বিপদসীমা অতিক্রম করেছে। সকল বহিরাঙ্গন কার্যক্রম অবিলম্বে বন্ধ করে ভেতরে নেওয়া আবশ্যক।</string>
+    <string name="local_severe_hazard_fallback_body">পরিস্থিতি খারাপ হওয়ায় সকল কার্যক্রম ভেতরে নিতে হবে।</string>
+    <string name="assistant_thinking_status">উত্তর তৈরি হচ্ছে...</string>
+    <string name="assistant_source_rule_based">নিয়মভিত্তিক উত্তর</string>
+    <string name="policy_title_friendly">স্কুল বহিরঙ্গন নিরাপত্তা নীতিমালা</string>
+    <string name="policy_excerpt_offline_no_data">সেন্সর এবং মডেলকৃত ডেটা অনুপস্থিত থাকলে নিরাপত্তার স্বার্থে শিক্ষার্থীদের শ্রেণিকক্ষে রাখা হয়।</string>
+    <string name="policy_excerpt_offline_rules">সকল বহিরঙ্গন কার্যক্রমের ক্ষেত্রে শারীরিক তীব্রতা, বায়ুমান (AQI) এবং হিট ইনডেক্সের সীমা প্রযোজ্য।</string>
+    <string name="policy_excerpt_default_rules">ক্যাম্পাসের হিট ইনডেক্স, বায়ুমান সূচক ও কার্যক্রমের তীব্রতা অনুযায়ী নিরাপত্তা সিদ্ধান্ত নির্ধারিত হয়।</string>
+    <string name="activity_pe_football">শারীরিক শিক্ষা ও ফুটবল</string>
+    <string name="activity_general_assembly">প্রাত্যহিক সমাবেশ</string>
+    <string name="activity_recess_break">টিফিন ও বিরতি</string>
+    <string name="activity_outdoor_sports">মাঠের খেলাধুলা</string>
+    <string name="activity_outdoor_default">বহিরঙ্গন কার্যক্রম</string>
+    <string name="note_asthma_sensitive_present">শ্বাসকষ্ট বা অ্যাজমাপ্রবণ শিক্ষার্থী উপস্থিত রয়েছে</string>
+    <string name="reason_students_weak">কয়েকজন শিক্ষার্থী দুর্বল থাকার কারণে সতর্কতা</string>
+    <string name="note_general_health_caution">শিক্ষকের স্বাস্থ্য সতর্কতা নোট যুক্ত রয়েছে</string>
+</resources>

@@ -154,7 +154,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
 
     // Firebase Cloud Messaging (F-06: Background Push & Alert Delivery)
-    implementation("com.google.firebase:firebase-messaging:24.1.0")
+    implementation("com.google.firebase:firebase-messaging:26.0.2")
 
     // Hilt (Dependency Injection)
     implementation("com.google.dagger:hilt-android:2.51.1")
